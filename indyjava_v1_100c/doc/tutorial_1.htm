@@ -1,0 +1,116 @@
+<html>
+
+<head>
+<title>Indiana Java Turorial #1</title>
+</head>
+
+<body background="rock_paper.gif" bgcolor="#404040" text="#FFFFFF" link="#10F0F0"
+vlink="#D0D0D0">
+
+<p><img src="indy_logo.gif" width="259" height="76" alt="indy_logo.gif (3362 bytes)"
+align="right"> </p>
+
+<h1><strong><em><font color="#FF0000">Step 1:</font><font color="#FF8040"> the &quot;Hello
+World&quot; adventure</em></strong></font></h1>
+
+<p>Indy Java is not just a game. It is a development tool in itself, since it can read
+game scripts and compile them, to be played later by end-users.</p>
+
+<p>Creating 2D (or pseudo-3D) graphic adventure games is not as hard as people think.<br>
+This system is based upon a script (a text file) that describes every element in the game.
+Such files have <b>*.ADV</b> extension and can be created with any text editor. The syntax
+is straightforward, as you will see. It has no similarities with Java. <font
+color="#FFFF00"><big><strong>No Java knowledge required!</strong></big></font></p>
+
+<p>A script is made up of different blocks. Each block starts with a keyword, and is
+delimited by brackets.<br>
+The simplest possible script is as follows.</p>
+<div align="center"><center>
+
+<table bgcolor="#000000" style="border: none">
+  <tr>
+    <td><pre>ROOM <font color="#00FFFF">main</font>
+{
+	ITEM <font color="#00FFFF">Indy</font>		<font
+color="#00FF00">// My hero   :)</font>
+	{
+		ANIMATION
+		{
+<font color="#00FFFF">			0  0  &quot;gr/indy_d.gif&quot;  1
+			0  1  &quot;gr/indy_r.gif&quot;  1
+			0  2  &quot;gr/indy_u.gif&quot;  1
+			0  3  &quot;gr/indy_l.gif&quot;  1
+			1  0  &quot;gr/indy_wd.gif&quot; 4
+			1  1  &quot;gr/indy_wr.gif&quot; 6
+			1  2  &quot;gr/indy_wu.gif&quot; 4
+			1  3  &quot;gr/indy_wl.gif&quot; 6
+			2  0  &quot;gr/indy_td.gif&quot; 7
+			2  1  &quot;gr/indy_tr.gif&quot; 4
+			2  2  &quot;gr/indy_tu.gif&quot; 1
+			2  3  &quot;gr/indy_tl.gif&quot; 4
+</font>		}
+		POSITION { <font
+color="#00FFFF">170 130 0</font> }     <font color="#00FF00">// Initial position in this room</font>
+		ITEM <font
+color="#00FFFF">whip</font>
+		{
+			ICON { <font color="#00FFFF">&quot;gr/whip.gif&quot;</font> }
+		}
+	}
+}
+
+COMMAND <font
+color="#00FFFF">use whip</font>      <font color="#00FF00">// A command trigger</font>
+{
+	SAY <font
+color="#00FFFF">indy </font><font color="#FF0000">&quot;Hello world!&quot;</font>
+}</pre>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p>Overall, the whole script is just the description of a single ROOM, where we can find
+one familiar character, who is carrying an ITEM.So, this script actually describes a
+hierarchy, a <em>tree</em> of objects like the one in the figure.<img src="tutorial_1.gif"
+alt="tutorial_1.gif (2497 bytes)" align="right" width="186" height="115" hspace="5"
+vspace="5"></p>
+
+<p>Within each object, its properties can be defined in inner blocks, like POSITION and
+ANIMATION, delimited by brackets. Here, you have the full set of images needed to animate
+the Indy character. For now, don't pay attention to the numbers that appear next to each
+image.<br>
+Every object can also have an ICON associated to it, if you wish. This icon will be
+displayed only when the item is carried by the main character.</p>
+
+<p>An adventure game needs to react to the commands entered by the player. The COMMAND
+block first specifies the sentence you want to react to. Then the consequences are defined
+in a block of instructions. Here, the character will just start talking a bit when the
+player tries &quot;use whip&quot;.</p>
+
+<p>Notice that uppercase and lowercase letters are equivalent. Also notice that comments
+start with &quot;<font color="#80FFFF"><b>//</b></font>&quot; .</p>
+
+<p>This is it! Type this script in a text file, and try to run it with the engine.</p>
+
+<p>Once you have a script, the process is as follows : 
+
+<ul>
+  <li>launch IndyJava as an <em>Application</em>, not as a browser <em>Applet</em> (read the <a
+    href="indy_faq.htm#JAVA_APPL">FAQ</a> about how to achieve this).</li>
+  <li>go to the menu <strong>File/Import</strong> and have the engine parse your script (<strong>TUTORIAL_1.ADV</strong>
+    in this case). If everything goes fine, you will be offered the possibility of saving the
+    compiled game.</li>
+  <li>save it as <b>001.GAG</b> (this is very important, because this is the filename that the
+    engine always looks for when players select File/New in the menu bar).</li>
+  <li>start testing the game.</li>
+</ul>
+
+<p>You will be able to move Indy around with the mouse, and try one command : &quot;Use
+Whip&quot;.</p>
+
+<p align="right"><a href="tutorial_2.htm">Next &gt;&gt;</a></p>
+
+<p><a href="index.html">Back to the main page</a></p>
+</body>
+</html>

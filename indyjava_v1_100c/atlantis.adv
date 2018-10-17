@@ -1,0 +1,108 @@
+/*          === INDYJAVA Multiplatform Adventure Game Engine ===           */
+
+/* =============================== */
+/* Interface from Fate of Atlantis */
+/* =============================== */
+
+SYSTEM
+{
+    WALK                   // Walking label properties
+    {
+//position { 0 }
+        LABEL { "Walk to" }
+        INK { 0 255 255 }  PAPER { 0 0 0 }
+        KEY { "w" }
+    }
+    VERB give_to
+    {
+        LABEL { "Give" }
+
+//size { 1 }
+//position { 2 }
+
+        SENTENCE { 2 "to" }
+        INK { 165 156 132 } PAPER { 80 68 48 }
+        KEY { "g" }
+    }
+    VERB take
+    {
+        LABEL { "Pick up" }
+        INK { 165 156 132 } PAPER { 80 68 48 }   KEY { "p" }
+    }
+    VERB Use
+    {
+//        LABEL { "Use" }
+        SENTENCE { * "with" }   // Special case: item-dependent sentences
+        INK { 165 156 132 }
+        PAPER { 80 68 48 }
+        KEY { "u" }
+        COMMUTATIVE { 1 }
+    }
+    VERB Open
+    {
+//        LABEL { "Open" }
+        INK { 165 156 132 } PAPER { 80 68 48 }  KEY { "o" }
+    }
+    VERB talk_to
+    {
+        LABEL { "Talk to" }
+        INK { 165 156 132 } PAPER { 80 68 48 }
+        KEY { "t" }
+    }
+    VERB Push
+    {
+//        LABEL { "Push" }
+        INK { 165 156 132 } PAPER { 80 68 48 }
+    }
+    VERB Close
+    {
+//        LABEL { "Close" }
+        INK { 165 156 132 } PAPER { 80 68 48 }   KEY { "c" }
+    }
+    VERB look
+    {
+        LABEL { "Look at" }
+        INK { 165 156 132 } PAPER { 80 68 48 }
+        KEY { "l" }
+    }
+    VERB Pull
+    {
+//        LABEL { "Pull" }
+        INK { 165 156 132 } PAPER { 80 68 48 }
+    }
+    DEFAULTV { look }      // default verb
+//    FPS { 8 }
+    ANGLES { 4 }
+    SCREEN { 320 143 }
+//    PLAYER { indy }
+    INVENTORY   // Properties of Inventory panel
+    {
+//position { 4 }
+        SIZE { 10 }
+        INK { 116 100 68 }
+        PAPER { 80 68 48 }
+        IMAGE
+        {
+        	"gr/up.gif"    "gr/not_up.gif"
+        	"gr/down.gif"    "gr/not_down.gif"
+        }
+    }
+//    TITLE { "Indiana Java & the Network of Doom" }
+//    CURSOR { "gr/m_cross.gif" 15 15 }
+    TALK    // Properties of Conversation panel
+    {
+        SIZE { 4 }
+        INK { 165 156 132 }
+        PAPER { 80 68 48 }
+//      FONT { "SansSerif" 11 }
+    }
+//  FONT { "courier" 20 }
+}
+
+ROOM my_lib
+{
+    ITEM actor
+    {
+        DEFAULTV { talk_to }
+    }
+}

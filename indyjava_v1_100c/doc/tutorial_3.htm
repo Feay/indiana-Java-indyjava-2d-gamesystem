@@ -1,0 +1,228 @@
+<html>
+
+<head>
+<title>Indiana Java Tutorial #3</title>
+</head>
+
+<body background="rock_paper.gif" bgcolor="#404040" text="#FFFFFF" link="#10F0F0"
+vlink="#D0D0D0">
+
+<p><img src="indy_logo.gif" width="259" height="76" alt="indy_logo.gif (3362 bytes)"
+align="right"> </p>
+
+<h1><strong><em><font color="#FF0000">Step 3:</font><font color="#FF8040"> doors</em></strong></font></h1>
+
+<p>Only one room was created in the previous steps. An adventure needs several rooms, and
+virtual doors have to be introduced to go from one room to another.</p>
+
+<hr>
+
+<pre>ROOM <font color="#00FFFF">main</font>	<font color="00FF00">// Starting room</font>
+{
+	BGSOUND { <font
+color="#00FFFF">&quot;snd/indysong.mid&quot;</font> }<font color="#00FF00">	// A bit of music</font>
+	IMAGE
+	{
+<font
+color="#00FFFF">		&quot;gr/idol.jpg&quot;</font><font color="#00FF00">		// Backdrop picture</font>
+	}
+	WALK
+	{
+<font
+color="#00FFFF">		&quot;gr/idol_bm.gif&quot;</font><font color="#00FF00">	// Walking area</font><font
+color="#00FFFF">
+</font>	}
+	ITEM <font color="#00FFFF">Indy</font>	<font color="#00FF00">// My hero   :)</font>
+	{
+		ANIMATION
+		{
+			<font
+color="#00FF00">// --- standby images ---</font>
+<font color="#00FFFF">			0  0  &quot;gr/indy_d.gif&quot;  1</font><font
+color="#00FF00"> // Looking South</font><font color="#00FFFF">
+			0  1  &quot;gr/indy_r.gif&quot;  1</font><font
+color="#00FF00"> // Looking West</font><font color="#00FFFF">
+			0  2  &quot;gr/indy_u.gif&quot;  1</font><font
+color="#00FF00"> // Looking North</font><font color="#00FFFF">
+			0  3  &quot;gr/indy_l.gif&quot;  1</font><font
+color="#00FF00"> // Looking East</font>
+			<font color="#00FF00">// --- walking animation ---</font>
+<font
+color="#00FFFF">			1  0  &quot;gr/indy_wd.gif&quot; 4</font><font color="#00FF00"> // Looking South</font><font
+color="#00FFFF">
+			1  1  &quot;gr/indy_wr.gif&quot; 6</font><font color="#00FF00"> // Looking West</font><font
+color="#00FFFF">
+			1  2  &quot;gr/indy_wu.gif&quot; 4</font><font color="#00FF00"> // Looking North</font><font
+color="#00FFFF">
+			1  3  &quot;gr/indy_wl.gif&quot; 6 </font><font color="#00FF00">// Looking East</font>
+			<font
+color="#00FF00">// --- talking animation ---</font>
+<font color="#00FFFF">			2  0  &quot;gr/indy_td.gif&quot; 7</font><font
+color="#00FF00"> // Looking South</font><font color="#00FFFF">
+			2  1  &quot;gr/indy_tr.gif&quot; 4</font><font
+color="#00FF00"> // Looking West</font><font color="#00FFFF">
+			2  2  &quot;gr/indy_tu.gif&quot; 1</font><font
+color="#00FF00"> // Looking North</font><font color="#00FFFF">
+			2  3  &quot;gr/indy_tl.gif&quot; 4</font><font
+color="#00FF00"> // Looking East</font>
+		}
+		POSITION { <font color="#00FFFF">170 170 0</font> }
+		ITEM <font
+color="#00FFFF">whip</font>
+		{
+			SENTENCE { <font color="#00FFFF">2</font> }	<font
+color="#00FF00">// this item needs another object with the verb &quot;use&quot;
+</font>			ICON { <font
+color="#00FFFF">&quot;gr/whip.gif&quot;</font> }
+<font color="#00FF00">			/* local triggers */
+</font>			COMMAND <font
+color="#00FFFF">Look whip</font>
+			{
+				SAY <font color="#00FFFF">indy </font><font
+color="#FF0000">&quot;I never get out without it!&quot;</font>
+			}
+			COMMAND <font
+color="#00FFFF">* whip</font>
+			{
+				SAY <font color="#00FFFF">indy </font><font
+color="#FF0000">&quot;I don't want to do that with my whip.&quot;</font>
+			}
+		}
+	}
+
+	ITEM <font
+color="#00FFFF">idol</font>
+	{
+		IMAGE { <font color="#00FFFF">0  0  &quot;gr/blank.gif&quot;</font> }
+		POSITION { <font
+color="#00FFFF">155 135 0</font> }
+	}
+	ITEM <font color="#00FFFF">plant_1</font>
+	{
+		IMAGE { <font
+color="#00FFFF">0  0  &quot;gr/plant_1.gif&quot;</font> }
+		POSITION { <font
+color="#00FFFF">0 183 0</font> }
+	}
+	ITEM <font color="#00FFFF">wayout</font>	<font
+color="#00FF00">// This will play the role of &quot;door&quot;</font>
+	{
+		IMAGE { <font
+color="#00FFFF">0  0  &quot;gr/plant_2.gif&quot;</font> }
+		POSITION { <font
+color="#00FFFF">256 183 38</font> }
+	}
+	ITEM <font color="#00FFFF">plant_3</font>
+	{
+		IMAGE { <font
+color="#00FFFF">0  0  &quot;gr/plant_3.gif&quot;</font> }
+		POSITION { <font
+color="#00FFFF">190 183 0</font> }
+	}
+
+	EVENT	<font color="#00FF00">// Trigger for this room</font>
+	{
+		IF
+		{
+			COLLISION <font
+color="#00FFFF">indy wayout</font>	<font color="#00FF00">// When player steps on the door...</font>
+		}
+		THEN
+		{
+			GOTO <font
+color="#00FFFF">outside</font>		<font color="#00FF00">// ...jump to the other room</font>
+			PLACE <font
+color="#00FFFF">indy outside	</font><font color="#00FF00">// Move player there.</font>
+			LOCATE <font
+color="#00FFFF">indy 140 140 0	</font><font color="#00FF00">// Make sure he is inside a walkable area.</font>
+		}
+	}
+}
+
+ROOM <font
+color="#00FFFF">outside</font>	<font color="00FF00">// The other room</font>
+{
+	BGSOUND { <font
+color="#00FFFF">&quot;snd/indysong.mid&quot;</font> }	<font color="#00FF00">	// Background music for this room.</font>
+	IMAGE { <font
+color="#00FFFF">&quot;gr/street_2.gif&quot;</font> }
+	WALK { <font color="#00FFFF">&quot;gr/street_2_bm.gif&quot;</font> }
+
+	ITEM <font
+color="#00FFFF">entrance</font>
+	{
+		IMAGE {<font color="#00FFFF"> 0  0  &quot;gr/blank2.gif&quot;</font> }
+		POSITION { <font
+color="#00FFFF">32  142  0</font> }
+	}
+
+	EVENT	<font color="#00FF00">// Trigger for this room</font>
+	{
+		IF
+		{
+			COLLISION <font
+color="#00FFFF">indy entrance</font>	<font color="#00FF00">// When player steps on the door...</font>
+		}
+		THEN
+		{
+			GOTO <font
+color="#00FFFF">main</font>		<font color="#00FF00">// ...jump to the initial room.</font>
+			PLACE <font
+color="#00FFFF">indy main</font>		<font color="#00FF00">// Move item there.</font>
+			LOCATE <font
+color="#00FFFF">indy 220 140 0</font><font color="#00FF00">	// Make sure it is inside a walkable area.</font>
+		}
+	}
+}
+
+<font
+color="#00FF00">/* global triggers */
+</font>
+COMMAND <font color="#00FFFF">look *</font>
+{
+	SAY <font
+color="#00FFFF">indy </font><font color="#FF0000">&quot;Nothing special&quot;</font>
+}
+COMMAND <font
+color="#00FFFF">* *</font>	<font color="#00FF00">// Will match any sentence (<em>verb</em>+<em>object</em>) not handled by previous command blocks.</font>
+{
+	SAY <font
+color="#00FFFF">indy</font> <font color="#FF0000">&quot;I can't do that&quot;</font>
+}
+COMMAND <font
+color="#00FFFF">* * *	</font><font color="#00FF00">// Will match any sentence (<em>verb</em>+<em>obj1</em>+<em>obj2</em>) not handled by previous command blocks.</font>
+{
+	SAY <font
+color="#00FFFF">indy</font> <font color="#FF0000">&quot;I can't do this&quot;</font>
+}</pre>
+
+<hr>
+
+<p>In this case, all the magic takes place in the EVENT block.<br>
+EVENT blocks are triggers. They are very similar to the COMMAND blocks, except that they
+are tested and executed all the time, even when the player is idle.<br>
+The item &quot;plant 2&quot; from the previous listing was renamed &quot;way out&quot; to
+give the player a clue about its function. The mechanism is simple: as soon as the
+player's character bumps into that item, the COLLISION condition becomes true and the
+player is transfered to the other room with the PLACE instruction. But putting the player
+there is not enough: the GOTO instruction is needed to switch the view to the second room.<br>
+A symetric EVENT mechanism is used in the second room, to go back to the first room.</p>
+
+<p>Trigger blocks (COMMAND and EVENT) can be declared inside any room and any item, as
+well as globally. As you would expect, inner local triggers are tested first.</p>
+
+<p>Notice that one of the rooms is called &quot;<strong>main</strong>&quot;. The engine
+detects this conventional name to know <em>where to start</em> when there are several
+rooms in the game.</p>
+
+<p>For each item, you can specifiy if it can be &quot;used&quot; alone or if it requires
+another object with the keyword SENTENCE. For example, the Whip always has to be used
+against something else.</p>
+
+<p>Not surprisingly, a different background music is played in every room.</p>
+
+<p align="right"><a href="tutorial_4.htm">Next &gt;&gt;</a></p>
+
+<p><a href="index.html">Back to the main page</a></p>
+</body>
+</html>

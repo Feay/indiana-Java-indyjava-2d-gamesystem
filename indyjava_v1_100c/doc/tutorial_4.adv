@@ -1,0 +1,134 @@
+/*  --- INDIANA JAVA Multiplatform Adventure Game Engine ---
+    tutorial #4                                 */
+
+ROOM main
+{
+    BGSOUND { "snd/indysong.mid" }
+    IMAGE { "gr/street_2.gif" }
+    WALK { "gr/street_2_bm.gif" }
+
+    ITEM Indy       // My hero   :-)
+    {
+        ANIMATION
+        {
+            // --- standby images ---
+            0  0  "gr/indy_d.gif" 1
+            0  1  "gr/indy_r.gif" 1
+            0  2  "gr/indy_u.gif" 1
+            0  3  "gr/indy_l.gif" 1
+            // --- walking animation ---
+            1  0  "gr/indy_wd.gif" 4
+            1  1  "gr/indy_wr.gif" 6
+            1  2  "gr/indy_wu.gif" 4
+            1  3  "gr/indy_wl.gif" 6
+            // --- talking animation ---
+            2  0  "gr/indy_td.gif" 7
+            2  1  "gr/indy_tr.gif" 4
+            2  2  "gr/indy_tu.gif" 1
+            2  3  "gr/indy_tl.gif" 4
+        }
+        POSITION { 140 140 0 }
+        ITEM whip
+        {
+            ICON { "gr/whip.gif" }
+            SENTENCE { 2 }  // this item needs another object with the verb "use"
+            COMMAND Look whip
+            {
+                SAY indy "I never get out without it!"
+            }
+            COMMAND * whip
+            {
+                SAY indy "I don't want to do that with my whip."
+            }
+        }
+    }
+
+    ITEM sophia
+    {
+        ANIMATION
+        {
+            // --- standby images ---
+            0  1  "gr/sophia_r.gif" 1
+            0  3  "gr/sophia_l.gif" 1
+            // --- walking animation ---
+            1  1  "gr/sophia_r.gif" 1
+            1  3  "gr/sophia_l.gif" 1
+            // --- talking animation ---
+            2  1  "gr/sophia_tr.gif" 4
+            2  3  "gr/sophia_tl.gif" 4
+        }
+        INK { 3 }
+        POSITION { 250 143 0 }
+        ITEM medallion
+        {
+            ICON { "gr/medalion.gif" }
+        }
+        VARIABLE { f }  // a simple flag
+        COMMAND look sophia
+        {
+            SAY indy "My favorite girl"
+        }
+        COMMAND talk sophia
+        {
+            MOVE indy 210 142 0
+            WAIT indy
+            TURN indy sophia
+
+            IF
+            {
+                EQ f 0
+            }
+            THEN
+            {
+                SAY indy "Sophia!  I missed you so much since Atlantis!"
+                TURN sophia indy
+                WAIT indy
+                SAY sophia "You? But you almost let me die there!"
+                WAIT sophia
+                SAY sophia "I will never play another adventure with you again!"
+                WAIT sophia
+                SAY indy "Sophia!  wait!"
+            }
+
+            IF
+            {
+                EQ f 1
+            }
+            THEN
+            {
+                SAY indy "I need you. Give me another chance."
+                TURN sophia indy
+                WAIT indy
+                SAY sophia "Mmmmm..."
+                WAIT sophia
+                SAY sophia "Take this, it might help you today."
+                GIVE indy medallion
+                SOUND "snd/medal.au"
+            }
+    
+            IF
+            {
+                GE f 2
+            }
+            THEN
+            {
+                SAY indy "Better let her alone for now."
+            }
+
+            ADD f 1     // increase variable "f"
+        }
+    }
+}
+
+COMMAND look *
+{
+    SAY indy "Nothing special"
+}
+COMMAND * *
+{
+    SAY indy "I can't do that"
+}
+COMMAND * * *
+{
+    SAY indy "I can't do this"
+}

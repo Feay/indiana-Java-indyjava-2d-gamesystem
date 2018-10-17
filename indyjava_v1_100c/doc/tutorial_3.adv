@@ -1,0 +1,121 @@
+/*  --- INDIANA JAVA Multiplatform Adventure Game Engine ---
+    tutorial #3 : Doors                   */
+
+ROOM main
+{
+    BGSOUND { "snd/indysong.mid" }
+    IMAGE { "gr/idol.jpg" }
+    WALK { "gr/idol_bm.gif" }
+
+    ITEM Indy       // My hero   :-)
+    {
+        ANIMATION
+        {
+            // --- standby images ---
+            0  0  "gr/indy_d.gif" 1
+            0  1  "gr/indy_r.gif" 1
+            0  2  "gr/indy_u.gif" 1
+            0  3  "gr/indy_l.gif" 1
+            // --- walking animation ---
+            1  0  "gr/indy_wd.gif" 4
+            1  1  "gr/indy_wr.gif" 6
+            1  2  "gr/indy_wu.gif" 4
+            1  3  "gr/indy_wl.gif" 6
+            // --- talking animation ---
+            2  0  "gr/indy_td.gif" 7
+            2  1  "gr/indy_tr.gif" 4
+            2  2  "gr/indy_tu.gif" 1
+            2  3  "gr/indy_tl.gif" 4
+        }
+        POSITION { 170 170 0 }
+        ITEM whip
+        {
+            ICON { "gr/whip.gif" }
+            SENTENCE { 2 }  // this item needs another object with the verb "use"
+            COMMAND Look whip
+            {
+                SAY indy "I never get out without it!"
+            }
+            COMMAND * whip
+            {
+                SAY indy "I don't want to do that with my whip."
+            }
+        }
+    }
+
+    ITEM idol
+    {
+        IMAGE { 0  0  "gr/blank.gif" }
+        POSITION { 155 135 0 }
+    }
+    ITEM plant_1
+    {
+        IMAGE { 0  0  "gr/plant_1.gif" }
+        POSITION { 37 183 0 }
+    }
+    ITEM wayout
+    {
+        IMAGE { 0  0  "gr/plant_2.gif" }
+        POSITION { 288 183 38 }
+    }
+    ITEM plant_3
+    {
+        IMAGE { 0  0  "gr/plant_3.gif" }
+        POSITION { 255 183 0 }
+    }
+    EVENT
+    {
+        IF
+        {
+            COLLISION indy wayout
+        }
+        THEN
+        {
+            GOTO outside
+            PLACE indy outside
+            LOCATE indy 140 140 0
+            SETORIENTATION indy 2
+        }
+    }
+}
+
+ROOM outside
+{
+    BGSOUND { "snd/indysong.mid" }
+    IMAGE { "gr/street_2.gif"  "gr/street_2_bm.gif" }
+
+    ITEM entrance
+    {
+        IMAGE
+        {
+            0  0  "gr/blank2.gif"
+        }
+        POSITION { 32  142  0 }
+    }
+    EVENT
+    {
+        IF
+        {
+            COLLISION indy entrance
+        }
+        THEN
+        {
+            GOTO main
+            PLACE indy main
+            LOCATE indy 220 140 0
+        }
+    }
+}
+
+COMMAND look *
+{
+	SAY indy "Nothing special"
+}
+COMMAND * *
+{
+	SAY indy "I can't do that"
+}
+COMMAND * * *
+{
+	SAY indy "I can't do this"
+}

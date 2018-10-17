@@ -1,0 +1,129 @@
+/*  --- INDIANA JAVA Multiplatform Adventure Game Engine ---
+    tutorial #4B : Interpersonal skills                  */
+
+ROOM main
+{
+    IMAGE { "gr/street_2.gif" }
+    WALK { "gr/street_2_bm.gif" }
+
+    ITEM Indy       // My hero   :)
+    {
+        ANIMATION
+        {
+            // --- standby images ---
+            0  0  "gr/indy_d.gif" 1 // Looking South
+            0  1  "gr/indy_r.gif" 1 // Looking West
+            0  2  "gr/indy_u.gif" 1 // Looking North
+            0  3  "gr/indy_l.gif" 1 // Looking East
+            // --- walking animation ---
+            1  0  "gr/indy_wd.gif" 4    // Looking South
+            1  1  "gr/indy_wr.gif" 6    // Looking West
+            1  2  "gr/indy_wu.gif" 4    // Looking North
+            1  3  "gr/indy_wl.gif" 6    // Looking East
+            // --- talking animation ---
+            2  0  "gr/indy_td.gif" 7    // Looking South
+            2  1  "gr/indy_tr.gif" 4    // Looking West
+            2  2  "gr/indy_tu.gif" 1    // Looking North
+            2  3  "gr/indy_tl.gif" 4    // Looking East
+        }
+        POSITION { 140 140 0 }
+    }
+
+    ITEM sophia
+    {
+        ANIMATION
+        {
+            // --- standby images ---
+            0  1  "gr/sophia_r.gif" 1   // Looking West
+            0  3  "gr/sophia_l.gif" 1   // Looking East
+            // --- walking animation ---
+            1  1  "gr/sophia_r.gif" 1   // Looking West
+            1  3  "gr/sophia_l.gif" 1   // Looking East
+            // --- talking animation ---
+            2  1  "gr/sophia_tr.gif" 4  // Looking West
+            2  3  "gr/sophia_tl.gif" 4  // Looking East
+        }
+        INK { 3 }   // Sophia's speech will be pink  :)
+        POSITION { 250 143 0 }
+        ITEM medallion
+        {
+            ICON { "gr/medalion.gif" }
+        }
+        VARIABLE
+        {
+            f   // Position within the conversation flow will be kept here.
+            r   // User selection will be kept here.
+            q   // Exit flag.
+        }
+        COMMAND talk sophia
+        {
+            MOVE indy 210 142 0 // Move to her left.
+            WAIT indy
+            TURN indy sophia    // Look at her.
+            TURN sophia indy    // Look at him.
+
+            /* Stage #0 within the conversation */
+            WHILE { EQ f 0 }
+            {
+                CLRANSWER           // Clear the conversation panel.
+                ADDANSWER "Sophia!"  1  // Add this to the panel, with ID=1
+                ADDANSWER "Who are you?" 2  // Add this to the panel, with ID=2
+                WAITANSWER r            // Wait for user selection and put result in variable "r"
+
+                IF { EQ r 1 }
+                {
+                    // User chose answer with ID = 1
+                    WAITSAY indy "Sophia! \n I missed you so much since Atlantis!"
+                    WAITSAY sophia "You? \n But you almost let me die there!"
+                    ADD f 1     // Move onto the next stage of the conversation.
+                }
+                IF { EQ r 2 }
+                {
+                    // User chose answer with ID = 2
+                    WAITSAY indy "Who are you?"
+                    WAITSAY sophia "Doctor Jones! \n I can't believe you don't remember me!"
+                    // This acted as a fake branch (led the player to nowhere)
+                }
+            }
+
+            /* Stage #1 within the conversation */
+            LET q 0     // Clear the exit flag.
+            WHILE { EQ f 1  AND  EQ q 0 }
+            {
+                CLRANSWER           // Clear the conversation panel.
+                ADDANSWER "I need you"  1   // Add this to the panel, with ID=1
+                ADDANSWER "Bye for now" 2   // Add this to the panel, with ID=2
+                WAITANSWER r            // Wait for user and put result in "r"
+
+                IF { EQ r 1 }
+                {
+                    // User chose answer with ID = 1
+                    WAITSAY indy "I need you. Give me another chance."
+                    WAITSAY sophia "Mmmmm... \n Take this, it might help you."
+                    GIVE indy medallion // Bingo!
+                    SOUND "snd/medal.au"
+                    ADD f 1     // The conversation is over.
+                }
+                IF { EQ r 2 }
+                {
+                    // User chose answer with ID = 2
+                    WAITSAY indy "Bye for now"
+                    LET q 1             // Exit conversation
+                }
+            }
+        }
+    }
+}
+
+COMMAND look *
+{
+    SAY indy "Nothing special"
+}
+COMMAND * *
+{
+    SAY indy "I can't do that"
+}
+COMMAND * * *
+{
+    SAY indy "I can't do this"
+}

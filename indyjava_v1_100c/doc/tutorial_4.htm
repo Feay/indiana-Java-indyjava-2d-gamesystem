@@ -1,0 +1,233 @@
+<html>
+
+<head>
+<title>Indiana Java Tutorial #4</title>
+</head>
+
+<body background="rock_paper.gif" bgcolor="#404040" text="#FFFFFF" link="#10F0F0"
+vlink="#D0D0D0">
+
+<p><img src="indy_logo.gif" width="259" height="76" alt="indy_logo.gif (3362 bytes)"
+align="right"> </p>
+
+<h1><strong><em><font color="#FF0000">Step 4:</font><font color="#FF8040"> making it
+harder for the player</em></strong></font></h1>
+
+<p>This will actually make it harder for the programmer, too&nbsp; ;-)<br>
+Suppose you want the player to need to talk to someone several times in order to get an
+item.</p>
+
+<hr>
+
+<pre>ROOM <font color="#00FFFF">main</font>
+{
+	IMAGE { <font color="#00FFFF">&quot;gr/street_2.gif&quot;</font> }
+	WALK { <font
+color="#00FFFF">&quot;gr/street_2_bm.gif&quot;</font> }
+
+	ITEM <font color="#00FFFF">Indy</font>       <font
+color="#00FF00">// My hero   :)</font>
+	{
+		ANIMATION
+		{
+			<font color="#00FF00">// --- standby images ---</font>
+<font
+color="#00FFFF">			0  0  &quot;gr/indy_d.gif&quot;  1</font><font color="#00FF00"> // Looking South</font><font
+color="#00FFFF">
+			0  1  &quot;gr/indy_r.gif&quot;  1</font><font color="#00FF00"> // Looking West</font><font
+color="#00FFFF">
+			0  2  &quot;gr/indy_u.gif&quot;  1 </font><font color="#00FF00">// Looking North</font><font
+color="#00FFFF">
+			0  3  &quot;gr/indy_l.gif&quot;  1</font><font color="#00FF00"> // Looking East</font>
+			<font
+color="#00FF00">// --- walking animation ---</font>
+<font color="#00FFFF">			1  0  &quot;gr/indy_wd.gif&quot; 4</font><font
+color="#00FF00"> // Looking South</font><font color="#00FFFF">
+			1  1  &quot;gr/indy_wr.gif&quot; 6</font><font
+color="#00FF00"> // Looking West</font><font color="#00FFFF">
+			1  2  &quot;gr/indy_wu.gif&quot; 4</font><font
+color="#00FF00"> // Looking North</font><font color="#00FFFF">
+			1  3  &quot;gr/indy_wl.gif&quot; 6 </font><font
+color="#00FF00">// Looking East</font>
+			<font color="#00FF00">// --- talking animation ---</font>
+<font
+color="#00FFFF">			2  0  &quot;gr/indy_td.gif&quot; 7</font><font color="#00FF00"> // Looking South</font><font
+color="#00FFFF">
+			2  1  &quot;gr/indy_tr.gif&quot; 4</font><font color="#00FF00"> // Looking West</font><font
+color="#00FFFF">
+			2  2  &quot;gr/indy_tu.gif&quot; 1</font><font color="#00FF00"> // Looking North</font><font
+color="#00FFFF">
+			2  3  &quot;gr/indy_tl.gif&quot; 4</font><font color="#00FF00"> // Looking East</font>
+		}
+		POSITION { <font
+color="#00FFFF">140 140 0</font> }
+	}
+
+	ITEM <font color="#00FFFF">sophia</font>
+	{
+		ANIMATION
+		{
+<font
+color="#00FF40">			// --- standby images ---
+</font><font color="#00FFFF">			0  1  &quot;gr/sophia_r.gif&quot; 1</font><font
+color="#00FF00"> // Looking West</font><font color="#00FFFF">
+			0  3  &quot;gr/sophia_l.gif&quot; 1</font><font
+color="#00FF00"> // Looking East</font><font color="#00FFFF">
+</font><font color="#00FF40">			// --- walking animation ---
+</font><font
+color="#00FFFF">			1  1  &quot;gr/sophia_r.gif&quot; 1 </font><font color="#00FF00">// Looking West</font><font
+color="#00FFFF">
+			1  3  &quot;gr/sophia_l.gif&quot; 1 </font><font color="#00FF00">// Looking East</font><font
+color="#00FFFF">
+</font><font color="#00FF00">			// --- talking animation ---
+</font><font
+color="#00FFFF">			2  1  &quot;gr/sophia_tr.gif&quot; 4 </font><font color="#00FF00">// Looking West</font><font
+color="#00FFFF">
+			2  3  &quot;gr/sophia_tl.gif&quot; 4 </font><font color="#00FF00">// Looking East</font><font
+color="#00FFFF">
+</font>		}
+		INK { <font color="#00FFFF">3</font> }	<font color="#00FF00">// Sophia's speech will be pink  :)</font>
+		POSITION { <font
+color="#00FFFF">250 143 0</font> }
+		ITEM <font color="#00FFFF">medallion</font>
+		{
+			ICON { <font
+color="#00FFFF">&quot;gr/medalion.gif&quot;</font> }
+		}
+		INTEGER { <font color="#00FFFF">f</font> }	<font
+color="#00FF00">// a simple flag</font>
+		COMMAND <font color="#00FFFF">look sophia</font>
+		{
+			SAY <font
+color="#00FFFF">indy </font><font color="#FF0000">&quot;My favorite girl&quot;</font>
+		}
+		COMMAND <font
+color="#00FFFF">talk sophia</font>
+		{
+			IF
+			{
+				EQ <font color="#00FFFF">f 0</font>	<font
+color="#00FF00">// ( f=0 ?) Did he talk to her before?</font>
+			}
+			THEN
+			{
+				MOVE <font
+color="#00FFFF">indy 210 142 0</font>	<font color="#00FF00">// Move to her left.</font>
+				WAIT <font
+color="#00FFFF">indy</font>		<font color="#00FF00">// Wait for him to finish walking.</font>
+				TURN <font
+color="#00FFFF">indy sophia</font>	<font color="#00FF00">// Look at her.</font>
+				TURN <font
+color="#00FFFF">sophia indy</font>	<font color="#00FF00">// Look at him!</font>
+				SAY <font
+color="#00FFFF">indy </font><font color="#FF0000">&quot;Sophia!  I missed you so much since Atlantis!&quot;</font>
+				WAIT <font
+color="#00FFFF">indy		</font><font color="#00FF00">// Wait for his sentence to finish.</font>
+				SAY <font
+color="#00FFFF">sophia </font><font color="#FF0000">&quot;You? But you almost let me die there!&quot;</font>
+				WAIT <font
+color="#00FFFF">sophia		</font><font color="#00FF00">// Wait for her sentence to finish.</font>
+				SAY <font
+color="#00FFFF">sophia </font><font color="#FF0000">&quot;I will never play any adventure with you again!&quot;</font>
+				WAIT <font
+color="#00FFFF">sophia		</font><font color="#00FF00">// Wait for her sentence to finish.</font>
+				SAY <font
+color="#00FFFF">indy </font><font color="#FF0000">&quot;Sophia!  wait!&quot;</font>
+			}
+
+			IF
+			{
+				EQ <font
+color="#00FFFF">f 1	</font><font color="#00FF00">// f=1 ?</font>
+			}
+			THEN
+			{
+				MOVE <font
+color="#00FFFF">indy 210 142 0</font>	<font color="#00FF00">// Move to her left.</font>
+				WAIT <font
+color="#00FFFF">indy</font><font color="#00FF00">		// Wait for him to finish walking.</font>
+				TURN <font
+color="#00FFFF">indy sophia</font>	<font color="#00FF00">// Look at her.</font>
+				TURN <font
+color="#00FFFF">sophia indy</font>	<font color="#00FF00">// Look at him!</font>
+				SAY <font
+color="#00FFFF">indy </font><font color="#FF0000">&quot;I need you. Give me another chance.&quot;</font>
+				WAIT <font
+color="#00FFFF">indy</font>
+				SAY <font color="#00FFFF">sophia </font><font
+color="#FF0000">&quot;Mmmmm...&quot;</font>
+				WAIT<font color="#00FFFF"> sophia</font>
+				SAY <font
+color="#00FFFF">sophia </font><font color="#FF0000">&quot;Take this, it might help you today.&quot;</font>
+				GIVE <font
+color="#00FFFF">indy medallion</font>	<font color="#00FF00">// Bingo!</font>
+				SOUND <font
+color="#00FFFF">&quot;snd/medal.au&quot;</font>
+			}
+
+			IF
+			{
+				EQ <font color="#00FFFF">f 2</font>	<font
+color="#00FF00">// ( f=2 ?) Did he already get the medalion from her?</font>
+			}
+			THEN
+			{
+				SAY <font
+color="#00FFFF">indy </font><font color="#FF0000">&quot;Better let her alone for now.&quot;</font>
+			}
+
+			ADD <font
+color="#00FFFF">f 1</font>		<font color="#00FF00">// (f=f+1) Increase variable &quot;f&quot;</font>
+		}
+	}
+}
+
+COMMAND <font
+color="#00FFFF">look *</font>
+{
+	SAY <font color="#00FFFF">indy </font><font
+color="#FF0000">&quot;Nothing special&quot;</font>
+}
+COMMAND <font color="#00FFFF">* *</font>
+{
+	SAY <font
+color="#00FFFF">indy</font> <font color="#FF0000">&quot;I can't do that&quot;</font>
+}
+COMMAND <font
+color="#00FFFF">* * *</font>
+{
+	SAY <font color="#00FFFF">indy</font> <font color="#FF0000">&quot;I can't do this&quot;</font>
+}</pre>
+
+<hr>
+
+<p>Look at the COMMAND block that handle the conversation through the use of an integer
+variable.<br>
+Variable <strong>f</strong> indicates the progression level reached within the
+conversation. The player will have to talk the girl two times to get the
+medalion. Initially, f = 0 , and <strong>f</strong> increases every time the player
+decides to talk to the girl. Based upon the value of this indicator, the conversation is
+different every time, giving the impression to the player that he is progressing by
+talking to her again.<br>
+Keep in mind that all variables in a script (whether global or local) are always
+&quot;static&quot;, meaning that they retain their values during the whole game. Also,
+integer variables are all equal to 0 at the beginning of the game.<br>
+<br>
+The WAIT keyword is essential in cutscenes. It pauses execution, taking control out of the
+player, while a character finishes his sentence or finishes walking.<br>
+<br>
+MOVE and TURN are simple to use instructions that can give characters a bit of life by
+avoiding being too motionless.<br>
+<br>
+The item &quot;medalion&quot; is placed into the player's inventory with the GIVE
+instruction. A wave file is played to reward the player at that moment with SOUND.<br>
+<br>
+The speech text color can be specified for each character (see the <a href="ref.htm">Reference
+Manual</a> for the list of color codes in SETINK). Using different colors makes it easier
+for the player to follow the conversation.</p>
+
+<p align="right"><a href="tutorial_4b.htm">Next &gt;&gt;</a></p>
+
+<p><a href="index.html">Back to the main page</a></p>
+</body>
+</html>

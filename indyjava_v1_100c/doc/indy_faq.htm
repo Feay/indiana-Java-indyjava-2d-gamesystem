@@ -1,0 +1,271 @@
+<html>
+
+<head>
+<title>Indiana Java FAQ</title>
+</head>
+
+<body background="rock_paper.gif" bgcolor="#404040" text="#FFFFFF" link="#10F0F0"
+vlink="#D0D0D0" style="border: 0px none">
+
+<p><img src="indy_logo.gif" width="259" height="76" alt="indy_logo.gif (3362 bytes)"
+align="right"> </p>
+
+<h1><strong><em><font color="#FF0000">FAQ:</font></em></strong></h1>
+
+<p><br>
+<font color="#FF8040"><em>Do I need any special soft to have a look at the game?</em></font><br>
+<br>
+No. Any web browser with Java support will do. Just load the page <strong>INDY.HTM</strong>
+and press the button to play the game.<br>
+<br>
+<em><font color="#FFFF80"><br>
+</font><font color="#FF8040">I have problems running the game properly with Micro$oft's
+Explorer and Netscape Navigator</em></font><br>
+<br>
+I am afraid there are compatibility issues. For now, use IE 4.0 and Netscape 4.06, or
+better yet, a Java interpreter.<br>
+Specifically, MS Explorer 3.0 and Netscape 4.04 (and prior versions) are out of luck.<br>
+<br>
+<em><font color="#FFFF80"><br>
+</font><font color="#FF8040">I use a recent version of Netscape with Linux Redhat 6, but
+it still doesn't work</em></font><br>
+<br>
+There is a known bug in the standard Redhat 6 setup that makes Netscape crash with any
+Java applet.<br>
+The workaround seems to be this: when logged as the Root user, type <font color="#DFFFDF"><strong>chkfontpath
+--add /usr/X11R6/lib/X11/fonts/75dpi</strong></font><br>
+<br>
+<br>
+<font color="#FF8000"><em>Why don't I get full sound &amp; music support when running the
+game?</em></font><br>
+<br>
+Java 1.1 (as included in all current browsers) had limited support for sound. The best
+option is to get a Java 1.2 Runtime.<br>
+<u><br>
+<br>
+</u><font color="#FF8040"><em>Why can't I save games?</em></font><br>
+<br>
+You are running the game as an Applet (ie. from within a web browser). Browsers' Java puts
+security restrictions upon Applets. You need to run the game as a java application to be
+able to save &amp; load game positions.<br>
+<br>
+<br>
+<font color="#FF8040"><em>What do I need to run the game as a Java Application?</em></font><br>
+<br>
+You need to get a java interpreter. <a href="http://www.javasoft.com">Sun</a> gives away a
+Java interpreter for nearly every hardware platform. Download the latest one from there,
+or from thousands of mirrors. For example, the file of the 95/98/NT version is called <a
+href="ftp://ftp.bitcon.no/.14/tucows/files2/jre1_2_2-win.exe"><strong>JRE12-WIN32.EXE</strong></a>
+and is 9 megabytes in size (compressed). The Macintosh version is available from <a
+href="http://www.apple.com/java">Apple</a>.<br>
+Notice that this will not upgrade your browsers' java to 1.2 level. This interpreter runs
+independently of any browser.<br>
+Alternatively, you can install the JDK 1.2 compiler suite, which obviously includes the
+interpreter.<br>
+<br>
+Once you have it correctly installed, you launch the game by typing <font color="#DFFFDF"><strong>JAVA
+-jar INDY.JAR</strong></font> at the O.S. command prompt.<br>
+Also, if you use w95/98/NT and installed Java 1.2, you just need to double click on <strong>INDY.JAR</strong>
+to launch the engine as an application. No need to mess with the command line.<br>
+<br>
+<font color="#FF8040"><em><br>
+Do I need to be connected to the Net in order to play?</em></font><br>
+<br>
+No. This is entirely off-line. No multiplayer here for now! But that could be included in
+future releases.<font color="#FF0000"><strong> ;-)</strong></font><br>
+<br>
+<font color="#FF8040"><em><br>
+Why is the playing screen so small?</em></font><br>
+<br>
+I wanted to recreate the appearence of 'old style' games. That's why the demo runs at
+320x200. However, when you create your own adventure, you can specifiy any window size.
+Check the tutorials.<br>
+</p>
+
+<hr color="#FFFF00">
+<font color="#FF8040"><em>
+
+<p><br>
+I've played the demo, and now I want to create my own adventure. Where can I download the
+engine ?</em></font><br>
+<br>
+You already have it! This is an all-in-one solution: the Indyjava application is both the
+runtime game engine and the adventure compiler. You just need to launch it as a Java
+application, and go to the menu File/Import . But read the tutorials first!<br>
+<br>
+<font color="#FF8040"><em><br>
+Where can I download the tutorial and documentation for the engine?</em></font><br>
+<br>
+Full documentation is included in the ZIP file. The same documentation is also available
+on the web.<br>
+<font color="#FF8040"><em><br>
+<br>
+What file formats can I use to create games with the engine?</em></font><br>
+<br>
+You can use all the file formats supported by the version of java you are running.<br>
+For java 1.1 this includes <strong>*.GIF</strong> (static and animated), <strong>*.JPEG</strong>,
+and a specific kind of <strong>*.AU</strong> files.<br>
+For java 1.2 this includes <strong>*.GIF</strong> (static and animated), <strong>*.JPEG</strong>,
+<strong>*.MID</strong>, <strong>*RMI, *.WAV</strong>, <strong>*.AU</strong><br>
+<br>
+<font color="#FF8040"><em><br>
+What editors can I use to create such games?</em></font><br>
+<br>
+You can create the script in any Notepad-like text editor. <a
+href="http://www.ultraedit.com">UltraEdit</a> is nice also (Win32).<br>
+To create and edit graphics I suggest <a href="http://www.jasc.com">Paint Shop Pro</a>
+(Win32).<br>
+<br>
+<font color="#FF8040"><em><br>
+Do I need to learn JAVA to be able to create adventure scripts for the engine?</em></font><br>
+<br>
+Not at all! The engine uses its own simple scripting language. Nothing in common with the
+language it was written in. Have a look at the <a href="tutorial_1.htm">tutorial</a>.
+However, knowledge of any computer language helps understanding this one faster.<br>
+<font color="#FF8040"><em><br>
+</em></font><br>
+<font color="#FF8040"><em>I don't see 'Import' in the menu bar!</em></font><br>
+<br>
+You are running the game as an Applet (ie. from within a web browser). To develop
+adventure scripts, you have run the game as a java application (see above).<br>
+<br>
+<em><font color="#FFFF80"><br>
+</font>
+<font color="#FF8040">I have created my own adventure game with this engine. Can I
+send it to you?</em></font><br>
+<br>
+Yes, please! I would be glad to have a look at your game and publish it here (if you
+want).<br>
+<br>
+<em><br>
+<font color="#FF8040">The game I have created works fine in Windows, but refuses to run in Unix or Mac</em></font><br>
+<br>
+Check the filenames of images and sounds in your script. You probably used &quot;\&quot; instead of &quot;/&quot; as directory separator. The latter works everywhere.
+Also, be very careful with uppercase/lowercase in filenames.<br>
+<br>
+<em><br>
+<font color="#FF8040">Will there be some 3D version of this engine?</em></font><br>
+<br>
+Mmmm... By chance, a Java 3D API just came out, so this is a possible feature for the next
+version. Maybe I will change the name and call it &quot;Grim Fanjava&quot; ? &nbsp; <font
+color="#FF0000"><strong>;-)</strong></font><br>
+<br>
+<em><br>
+<font color="#FF8040">There should be some kind of editor to ease writting of scripts for
+the engine</em></font><br>
+<br>
+Good idea!&nbsp; Somebody should create that. &nbsp; <font color="#FF0000"><strong>;-)</strong></font><br>
+<br>
+<em><br>
+<font color="#FF8040">How can I contact you? Do you have ICQ?</em></font><br>
+<br>
+No, I don't. Just mail me. Also, I can sometimes be seen in the #monkey-island channel in
+DALnet.<br>
+<br>
+</p>
+
+<hr color="#FFFF00">
+<em><strong><font color="#FF0000">
+
+<p></font><big><big><font color="#FF8040">IndyJava Road Map</em/></strong></font><font
+color="#FF8000"><br>
+</big></big></font><br>
+</em>This is the development plan for the project.<em><font color="#FF0000"></p>
+</font></em>
+
+<table border="0" bgcolor="#000000" height="297" width="676">
+  <tr>
+    <td width="164" height="19"></td>
+    <td align="center" height="19" width="162"><u><font color="#FFFFFF">V 1.0</font></u></td>
+    <td width="163" align="center" height="19"><u><font color="#FFFFFF">V 1.5</font></u></td>
+    <td width="163" align="center" height="19"><u><font color="#FFFFFF">V 2.0</font></u></td>
+  </tr>
+  <tr>
+    <td width="164" height="19"><font color="#FFFFFF">2D engine</font></td>
+    <td align="center" height="19" width="162"><strong><font color="#FF0000">X</font></strong></td>
+    <td width="163" align="center" height="19"><strong><font color="#FF0000">X</font></strong></td>
+    <td width="163" align="center" height="19"></td>
+  </tr>
+  <tr>
+    <td width="164" height="19"><font color="#FFFFFF">Classic interface</font></td>
+    <td align="center" height="19" width="162"><strong><font color="#FF0000">X</font></strong></td>
+    <td width="163" align="center" height="19"><strong><font color="#FF0000">X</font></strong></td>
+    <td width="163" align="center" height="19"><strong><font color="#FF0000">X</font></strong></td>
+  </tr>
+  <tr>
+    <td width="164" height="19"><font color="#FFFFFF">Interpreted language</font></td>
+    <td align="center" height="19" width="162"><strong><font color="#FF0000">X</font></strong></td>
+    <td width="163" align="center" height="19"><strong><font color="#FF0000">X</font></strong></td>
+    <td width="163" align="center" height="19"><strong><font color="#FF0000">X</font></strong></td>
+  </tr>
+  <tr>
+    <td width="164" height="19"><font color="#FFFFFF">Save &amp; Load</font></td>
+    <td align="center" height="19" width="162"><font color="#FF0000"><strong>X</strong></font></td>
+    <td width="163" align="center" height="19"><font color="#FF0000"><strong>X</strong></font></td>
+    <td width="163" align="center" height="19"><font color="#FF0000"><strong>X</strong></font></td>
+  </tr>
+  <tr>
+    <td width="164" height="19"><font color="#FFFFFF">Conversations</font></td>
+    <td align="center" height="19" width="162"><strong><font color="#FF0000">X</font></strong></td>
+    <td width="163" align="center" height="19"><strong><font color="#FF0000">X</font></strong></td>
+    <td width="163" align="center" height="19"><strong><font color="#FF0000">X</font></strong></td>
+  </tr>
+  <tr>
+    <td width="164" height="19"><font color="#FFFFFF">Single inheritance</font></td>
+    <td align="center" height="19" width="162"><strong><font color="#FF0000">X</font></strong></td>
+    <td width="163" align="center" height="19"><strong><font color="#FF0000">X</font></strong></td>
+    <td width="163" align="center" height="19"><strong><font color="#FF0000">X</font></strong></td>
+  </tr>
+  <tr>
+    <td width="164" height="19">Enhanced language syntax</td>
+    <td align="center" height="19" width="162"></td>
+    <td width="163" align="center" height="19"><strong><font color="#FF0000">X</font></strong></td>
+    <td width="163" align="center" height="19"></td>
+  </tr>
+  <tr>
+    <td width="164" height="19">TCP/IP Multiplayer</td>
+    <td align="center" height="19" width="162"></td>
+    <td width="163" align="center" height="19"><strong><font color="#FF0000">X</font></strong></td>
+    <td width="163" align="center" height="19"><strong><font color="#FF0000">X</font></strong></td>
+  </tr>
+  <tr>
+    <td width="164" height="16"><font color="#FFFFFF">Shadows / Color Lighting</font></td>
+    <td align="center" height="16" width="162"><strong><font color="#FF0000">X</font></strong></td>
+    <td width="163" align="center" height="16"><strong><font color="#FF0000">X</font></strong></td>
+    <td width="163" align="center" height="16"></td>
+  </tr>
+  <tr>
+    <td width="164" height="19"><font color="#FFFFFF">OpenGL 3D Acceleration</font></td>
+    <td align="center" height="19" width="162"></td>
+    <td width="163" align="center" height="19"></td>
+    <td width="163" align="center" height="19"><strong><font color="#FF0000">X</font></strong></td>
+  </tr>
+  <tr>
+    <td width="164" height="19"><font color="#FFFFFF">Visual Editor/Creator</font></td>
+    <td align="center" height="19" width="162"></td>
+    <td width="163" align="center" height="19"><strong><font color="#FF0000">X</font></strong></td>
+    <td width="163" align="center" height="19"><strong><font color="#FF0000">X</font></strong></td>
+  </tr>
+  <tr>
+    <td width="164" height="19"><font color="#FFFFFF">Revamped language syntax</font></td>
+    <td align="center" height="19" width="162"></td>
+    <td width="163" align="center" height="19"></td>
+    <td width="163" align="center" height="19"><strong><font color="#FF0000">X</font></strong></td>
+  </tr>
+</table>
+<font color="#FF0000"><em>
+
+<p><br>
+<br>
+</p>
+
+<hr color="#FFFF00">
+
+<p align="right"><a href="mailto:chir@geocities.com"><img src="chir.gif" width="127"
+height="46" alt="Chir" style="border: 0px"><img src="mail.gif" width="45" height="52"
+style="border: 0px"></a></p>
+<font color="#FF0000"><em><a href="http://java.indy3d.net">
+
+<p>Back to the main page</a> </em></font></em></font></p>
+</body>
+</html>

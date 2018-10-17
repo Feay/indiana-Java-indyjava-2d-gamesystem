@@ -1,0 +1,435 @@
+<html>
+
+<head>
+<title>Indiana Java Reference</title>
+</head>
+
+<body background="rock_paper.gif" bgcolor="#404040" text="#FFFFFF" link="#10F0F0"
+vlink="#D0D0D0">
+
+<p><img src="indy_logo.gif" width="259" height="76" alt="indy_logo.gif (3362 bytes)"
+align="right"> </p>
+
+<h1><strong><em><font color="#FF0000">Reference Manual</font></em></strong></h1>
+
+<p>All the keywords recognised by the parser are listed here.<br>
+<br>
+<em><strong><font color="#FF8040"><br>
+<big><big>Block headers</font><br>
+</strong></em></big></big><br>
+<font color="#FFFF80"><strong>ALPHA<br>
+ANIMATION<br>
+BGSOUND<br>
+COMMAND<br>
+CURSOR<br>
+DEFAULTV<br>
+ELSE<br>
+EVENT<br>
+FOR<br>
+FONT<br>
+IMAGE<br>
+ICON<br>
+INK<br>
+INTEGER<br>
+INVENTORY<br>
+ITEM<br>
+ITEMVAR<br>
+KEY<br>
+PAPER<br>
+PLAYER<br>
+POSITION<br>
+PROC<br>
+ROOM<br>
+ROOMVAR<br>
+SCALE<br>
+SCREEN<br>
+SENTENCE<br>
+SIZE<br>
+SPEED<br>
+STRING<br>
+SUPER<br>
+SYSTEM<br>
+TALK<br>
+TITLE<br>
+THEN<br>
+VERB<br>
+WALK<br>
+WHILE<br>
+</strong></font><br>
+</p>
+
+<p><em><strong><font color="#FF8040"><br>
+<big><big>System variables</font><br>
+</strong></em></big></big><br>
+CurrentRoom<br>
+CurrentPlayer<br>
+Argv1<br>
+Argv2<br>
+</p>
+
+<p><br>
+<big><big><em><strong><font color="#FF8040">Procedures</font><br>
+</strong></em></big></big><br>
+<font color="#FFFF80"><strong>ADD</strong> &lt;IntVar&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Perfoms var := var + int<br>
+<strong><br>
+<font color="#FFFF80">ADDANSWER</strong> &lt;txt&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Adds the specified text to the conversation panel, with the
+specified integer ID.<br>
+<strong><br>
+<font color="#FFFF80">ADDV</strong> &lt;IntVar1&gt; &lt;IntVar2&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Perfoms var1 := var1 + var2<br>
+<strong><br>
+<font color="#FFFF80">ATTITUDE</strong> &lt;item&gt; &lt;int&gt;&nbsp;&nbsp;&nbsp; </font><font
+color="#FF0000">Obsolete</font><font color="#FFFF80"><br>
+</font>&nbsp;&nbsp;&nbsp; Equivalent to <strong>SETATTITUDE</strong>.<br>
+<strong><br>
+<font color="#FFFF80">CLRANSWER</strong><br>
+</font>&nbsp;&nbsp;&nbsp; Empty the conversation panel.<br>
+<strong><br>
+<font color="#FFFF80">DELANSWER</strong> &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Removes the specified answer from the conversation panel.<br>
+<strong><br>
+<font color="#FFFF80">EXIT</strong><br>
+</font>&nbsp;&nbsp;&nbsp; Quits the engine immediately (no &quot;save before closing&quot;
+confirmation).<br>
+<strong><br>
+<font color="#FFFF80">GIVE</strong> &lt;actor&gt; &lt;item&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Moves item into actor's inventory<br>
+<strong><br>
+<font color="#FFFF80">GOTO</strong> &lt;room&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Jumps to specified room. Equivalent to <strong>TRANSITION
+&lt;room&gt; 0</strong><br>
+<strong><br>
+<font color="#FFFF80">GOTOTRANSITION</strong> &lt;room&gt; &lt;txt&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Jumps to specified room, using the specified custom plug-in as
+visual transition effect.<br>
+<strong><br>
+<font color="#FFFF80">LET</strong> &lt;IntVar&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Perfoms var := int<strong><br>
+<br>
+<font color="#FFFF80">LOCATE</strong> &lt;item&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+&nbsp;&nbsp;&nbsp; </font><font color="#FF0000">Obsolete</font><font color="#FFFF80"><br>
+</font>&nbsp;&nbsp;&nbsp; Equivalent to <strong>SETPOSITION</strong>.<br>
+<strong><br>
+<font color="#FFFF80">MOVE</strong> &lt;item&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Sets the destination of the item to the specified (x,y,z)
+location in the item's current room. The item will try to reach the position by walking
+towards it. The current 'walking' area will not be respected.<em> See also the WALK
+command.</em><strong> <br>
+<br>
+<font color="#FFFF80">MOVETO</strong> &lt;item&gt; &lt;item&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Sets the destination of the item to be the other item. The item
+will try to collide with the other by walking towards it. The current 'walking' area will
+not be respected<strong>. </strong><em> See also the WALKTO command.</em><strong><br>
+<br>
+<font color="#FFFF80">MULT</strong> &lt;IntVar&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Perfoms var := var * int<br>
+<strong><br>
+<font color="#FFFF80">MULTV</strong> &lt;IntVar1&gt; &lt;IntVar2&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Perfoms var1 := var1 * var2<br>
+<strong><br>
+<font color="#FFFF80">ORIENTATE</strong> &lt;item&gt; &lt;int&gt;&nbsp;&nbsp;&nbsp; </font><font
+color="#FF0000">Obsolete</font><font color="#FFFF80"><br>
+</font>&nbsp;&nbsp;&nbsp; Equivalent to <strong>SETORIENTATION</strong>.<br>
+<strong><br>
+<font color="#FFFF80">PLACE</strong> &lt;item&gt; &lt;room&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Moves item into specified room.<br>
+<strong><br>
+<font color="#FFFF80">RAND</strong> &lt;IntVar&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Puts a random value between 0 and 1000 in the specified
+variable.<br>
+<strong><br>
+<font color="#FFFF80">SAY</strong> &lt;item&gt; &lt;txt&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Makes this item say a sentence.<br>
+<strong><br>
+<font color="#FFFF80">SAYI</strong> &lt;ItemVar&gt; &lt;txt&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Makes this item say a String.<br>
+<strong><br>
+<font color="#FFFF80">SAYIS</strong> &lt;ItemVar&gt; &lt;StringVar&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Makes this item say a String.<br>
+<strong><br>
+<font color="#FFFF80">SAYS</strong> &lt;item&gt; &lt;StringVar&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Makes this item say a String.<br>
+<strong><br>
+<font color="#FFFF80">SETALPHA</strong> &lt;item&gt; &lt;int&gt;&nbsp;&nbsp;&nbsp; </font><font
+color="#FF0000">Requires Java 1.2</font><font color="#FFFF80"><br>
+</font>&nbsp;&nbsp;&nbsp; Changes the transparency level of the specified item. Default =
+100 (no transparency).<br>
+<strong><br>
+<font color="#FFFF80">SETANIMATION</strong> &lt;item&gt; &lt;int&gt; &lt;int&gt;
+&lt;filename&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Changes the animation of an item for the specified attitude and
+the specified direction.<br>
+<strong><br>
+<font color="#FFFF80">SETATTITUDE</strong> &lt;item&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Changes the attitude of an item (the attitude number is the same
+as in the IMAGE block).<br>
+<strong><br>
+<font color="#FFFF80">SETBGSOUND</strong> &lt;item&gt; &lt;int&gt; &lt;filename&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Changes the sound associated to a specific item's attitude.<br>
+<strong><br>
+<font color="#FFFF80">SETICON</strong> &lt;item&gt; &lt;filename&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Changes the inventory icon of an item.<br>
+<strong><br>
+<font color="#FFFF80">SETIMAGE</strong> &lt;item&gt; &lt;int&gt; &lt;int&gt;
+&lt;filename&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Changes the image of an item for the specified attitude and the
+specified direction.<br>
+&nbsp;&nbsp;&nbsp; Equivalent to <b>SETANIMATION &lt;int&gt; &lt;int&gt; &lt;filename&gt;
+1</b><br>
+<strong><br>
+<font color="#FFFF80">SETINK</strong> &lt;item&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Changes the speech color of an item, according to the following
+color codes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0:<span
+style="background-color: rgb(0,0,0); color: rgb(255,255,255)"> black </span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1:<span
+style="background-color: rgb(0,0,255); color: rgb(255,255,255)"> blue </span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2:<span
+style="background-color: rgb(255,0,0); color: rgb(255,255,255)"> red </span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3:<span
+style="background-color: rgb(255,80,255); color: rgb(255,255,255)"> pink </span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4:<span
+style="background-color: rgb(80,255,80); color: rgb(0,0,0)"> green </span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5:<span
+style="background-color: rgb(80,255,255); color: rgb(0,0,0)"> cyan </span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6:<span
+style="background-color: rgb(255,255,0); color: rgb(0,0,0)"> yellow </span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7:<span
+style="background-color: rgb(255,255,255); color: rgb(0,0,0)"> white </span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8:<span
+style="background-color: rgb(192,192,192); color: rgb(0,0,0)"> gray </span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9:<span
+style="background-color: rgb(255,128,48); color: rgb(0,0,0)"> orange </span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10:<span
+style="background-color: rgb(200,150,0); color: rgb(0,0,0)"> brown </span><br>
+<strong><br>
+<font color="#FFFF80">SETLABEL</strong> &lt;item&gt; &lt;txt&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Changes the label of an item.<br>
+<strong><br>
+<font color="#FFFF80">SETMAPMODE</strong> &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Switches interface to/from &quot;map&quot; mode. Valid integer
+values are 0 and 1 .<br>
+<strong><br>
+<font color="#FFFF80">SETMOTIONBLUR</strong> &lt;int&gt;&nbsp;&nbsp;&nbsp; </font><font
+color="#FF0000">Requires Java 1.2</font><font color="#FFFF80"><br>
+</font>&nbsp;&nbsp;&nbsp; Sets motion blur for the whole screen. Default = 100 (no blur).<br>
+<strong><br>
+<font color="#FFFF80">SETORIENTATION</strong> &lt;item&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; The specified item will orientate itself in the specified
+direction. Tthe direction number is the same as in the IMAGE block.<br>
+<strong><br>
+<font color="#FFFF80">SETPLAYER</strong> &lt;item&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Switches control to the specified actor, automatically changing
+rooms if necessary.<br>
+<strong><br>
+<font color="#FFFF80">SETPOSITION</strong> &lt;item&gt; &lt;int&gt; &lt;int&gt;
+&lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Instantly moves the item to the specified (x,y,z) location in
+the item's current room. The first 2 coordinates are absolute pixel position within the
+background picture, with point (0,0) being the topleft corner of the background. The third
+coordinate is the elevation from the floor (normally zero).<br>
+<strong><br>
+<font color="#FFFF80">SETROOMBGSOUND</strong> &lt;room&gt; &lt;filename&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Changes the background music of a room.<br>
+<strong><br>
+<font color="#FFFF80">SETSCALE</strong> &lt;item&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Changes the scaling factor for a specific item.<br>
+<strong><br>
+<font color="#FFFF80">SETSPEED</strong> &lt;item&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Changes the walking speed of an item.<br>
+<strong><br>
+<font color="#FFFF80">SETTRAIL</strong> &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Makes all items leave a trail behind them when they move. Valid
+integer values are 0 and 1 .<br>
+<strong><br>
+<font color="#FFFF80">SETVERBLABEL</strong> &lt;verb&gt; &lt;string&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Changes the appearent name of a verb in the interface.<br>
+<strong><br>
+<font color="#FFFF80">SLEEP</strong> &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Freezes execution during the specified number of milliseconds.<br>
+<strong><br>
+<font color="#FFFF80">SOUND</strong> &lt;filename&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Plays once the specifies sound file.<br>
+<strong><br>
+<font color="#FFFF80">SPEAK</strong> &lt;item&gt; &lt;txt&gt;
+&lt;filename&gt;&nbsp;&nbsp;&nbsp; </font><font color="#FF0000">Requires Java 1.2</font><font
+color="#FFFF80"><br>
+</font>&nbsp;&nbsp;&nbsp; Makes this item pronounce a recorded sentence.<br>
+<strong><br>
+<font color="#FFFF80">STOPSOUND</strong><br>
+</font>&nbsp;&nbsp;&nbsp; Interrupts the latest SOUND instruction (if still playing).<br>
+<strong><br>
+<font color="#FFFF80">TRANSITION</strong> &lt;room&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Jumps to specified room, using the specified visual transition
+effect, according to the following codes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0: no visual transition
+(jump immediately)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1: fade to black from
+center<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2: fade to black from
+left<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3: fade to black from
+top<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4: scroll left<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5: scroll right<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6: scroll up<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7: scroll down<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8: smooth mix <font
+color="#FF0000">Requires Java 1.2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9: smooth fade to black
+<font color="#FF0000">Requires Java 1.2</font><br>
+<strong><br>
+<font color="#FFFF80">TURN</strong> &lt;item&gt; &lt;item&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; The specified item will orientate itself so as to appear looking
+at the other item.<br>
+<strong><br>
+<font color="#FFFF80">WAIT</strong> &lt;item&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Takes control out of the player while the specified item is busy
+(talking or walking).<br>
+<strong><br>
+<font color="#FFFF80">WAITANSWER</strong> &lt;var&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Takes control out of the player until the user selects one of
+the answers in the conversation panel that appears.<br>
+<strong><br>
+<font color="#FFFF80">WAITMOVE</strong> &lt;item&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Equivalent to <strong>MOVE item x y z</strong> followed by <strong>WAIT
+item</strong>.<br>
+<strong><br>
+<font color="#FFFF80">WAITMOVETO</strong> &lt;item&gt; &lt;item&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Equivalent to <strong>MOVETO item1 item2</strong> followed by <strong>WAIT
+item1</strong>.<br>
+<strong><br>
+<font color="#FFFF80">WAITSOUND</strong> &lt;filename&gt;&nbsp;&nbsp;&nbsp; </font><font
+color="#FF0000">Requires JMF</font><font color="#FFFF80"><br>
+</font>&nbsp;&nbsp;&nbsp; Freezes execution while the specified sound is being played.<br>
+<strong><br>
+<font color="#FFFF80">WAITVIDEO</strong> &lt;filename&gt;&nbsp;&nbsp;&nbsp; </font><font
+color="#FF0000">Requires JMF</font><font color="#FFFF80"><br>
+</font>&nbsp;&nbsp;&nbsp; Freezes execution while the specified video is being played.<br>
+<strong><br>
+<font color="#FFFF80">WAITSAY</strong> &lt;item&gt; &lt;txt&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Equivalent to <strong>SAY item txt</strong> followed by <strong>WAIT
+item</strong>.<br>
+<strong><br>
+<font color="#FFFF80">WAITSAYI</strong> &lt;itemvar&gt; &lt;txt&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Equivalent to <strong>SAYI itemvar txt</strong> followed by <strong>WAIT</strong>.<br>
+<strong><br>
+<font color="#FFFF80">WAITSAYIS</strong> &lt;itemvar&gt; &lt;stringvar&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Equivalent to <strong>SAYIS itemvar stringvar</strong> followed by <strong>WAIT</strong>.<br>
+<strong><br>
+<font color="#FFFF80">WAITSPEAK</strong> &lt;item&gt; &lt;txt&gt;
+&lt;filename&gt;&nbsp;&nbsp;&nbsp; </font><font color="#FF0000">Requires JMF</font><font
+color="#FFFF80"><br>
+</font>&nbsp;&nbsp;&nbsp; Equivalent to <strong>SPEAK</strong> followed by <strong>WAIT</strong>.<br>
+<strong><br>
+<font color="#FFFF80">WALK</strong> &lt;item&gt; &lt;int&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Sets the destination of the item to the specified (x,y,z)
+location in the item's current room. The item will try to reach the position by walking
+towards it, within the 'walk area'. Unlike MOVE, only 2 coordinates are needed here, since
+the item will not change the third one during the walk.<br>
+<strong><br>
+<font color="#FFFF80">WALKTO</strong> &lt;item&gt; &lt;item&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Sets the destination of the item to be the other item. The item
+will try to collide with the other, by walking towards it, within the 'walk area'.<br>
+<strong><br>
+<font color="#FFFF80">WAITWALK</strong> &lt;item&gt; &lt;int&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Equivalent to <strong>WALK item x y</strong> followed by <strong>WAIT
+item</strong>.<br>
+<strong><br>
+<font color="#FFFF80">WAITWALKTO</strong> &lt;item1&gt; &lt;item2&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Equivalent to <strong>WALKTO item1 item2 </strong> followed by <strong>WAIT
+item</strong>1.<br>
+</p>
+
+<p>&nbsp;</p>
+
+<p><big><big><em><strong><font color="#FF8040">System procedures</font><br>
+</strong></em></big></big><br>
+OnEntry<br>
+OnExit<br>
+</p>
+
+<p><em><strong><font color="#FF8040"><br>
+<big><big>Functions</font><br>
+</strong></em></big></big><br>
+<font color="#FFFF80"><strong>COLLISION</strong> &lt;item&gt; &lt;item&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if two items have collided<br>
+<br>
+<font color="#FFFF80"><strong>EQ</strong> &lt;IntVar&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if var == int<br>
+<br>
+<font color="#FFFF80"><strong>EQI</strong> &lt;ItemVar&gt; &lt;item&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if var == item<br>
+<br>
+<font color="#FFFF80"><strong>EQR</strong> &lt;RoomVar&gt; &lt;room&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if var == room<br>
+<br>
+<font color="#FFFF80"><strong>EQS</strong> &lt;StringVar&gt; &lt;txt&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if var == txt<br>
+<br>
+<font color="#FFFF80"><strong>EQSV</strong> &lt;StringVar1&gt; &lt;StringVar2&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if var1 == var2<br>
+<br>
+<font color="#FFFF80"><strong>EQV</strong> &lt;IntVar1&gt; &lt;IntVar2&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if var1 == var2<br>
+<br>
+<font color="#FFFF80"><strong>GE</strong> &lt;IntVar&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if var &gt;= int<br>
+<br>
+<font color="#FFFF80"><strong>GEV</strong> &lt;IntVar1&gt; &lt;IntVar2&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if var1 &gt;= var2<br>
+<br>
+<font color="#FFFF80"><strong>GT</strong> &lt;IntVar&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if var &gt; int<br>
+<br>
+<font color="#FFFF80"><strong>GTV</strong> &lt;IntVar1&gt; &lt;IntVar2&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if var1 &gt; var2<br>
+<br>
+<font color="#FFFF80"><strong>INSIDE</strong> &lt;item1&gt; &lt;item2&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if item2 is located within item1's bounding box. Very
+similar to COLLISION, but weaker (it is easier to have INSIDE true than to have COLLISION
+true).<br>
+<br>
+<font color="#FFFF80"><strong>ISPLAYER</strong> &lt;item&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if the item currently under player's control is
+&lt;item&gt;<br>
+<br>
+<font color="#FFFF80"><strong>LE</strong> &lt;var&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if var &lt;= int<br>
+<br>
+<font color="#FFFF80"><strong>LEV</strong> &lt;IntVar1&gt; &lt;IntVar2&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if var1 &lt;= var2<br>
+<br>
+<font color="#FFFF80"><strong>LT</strong> &lt;var&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if var &lt; int<br>
+<br>
+<font color="#FFFF80"><strong>LTV</strong> &lt;IntVar1&gt; &lt;IntVar2&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if var1 &lt; var2<br>
+<br>
+<font color="#FFFF80"><strong>NE</strong> &lt;var&gt; &lt;int&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if var != int<br>
+<br>
+<font color="#FFFF80"><strong>NEV</strong> &lt;IntVar1&gt; &lt;IntVar2&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if var1 != var2<br>
+<br>
+<font color="#FFFF80"><strong>PRESENT</strong> &lt;item&gt; &lt;room&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if the specified item is currently into that room.<br>
+<br>
+<font color="#FFFF80"><strong>TAKEN</strong> &lt;actor&gt; &lt;item&gt;<br>
+</font>&nbsp;&nbsp;&nbsp; Checks if the specified item is currently into the actor's
+inventory.<br>
+</p>
+
+<p><em><strong><font color="#FF8040"><br>
+<big><big>Operators</font><br>
+</strong></em></big></big><br>
+<font color="#FFFF80"><strong>AND<br>
+OR<br>
+NOT<br>
+</strong></font><br>
+<br>
+<a href="index.html">Back to the main page</a></p>
+</body>
+</html>

@@ -1,0 +1,820 @@
+<html>
+
+<head>
+<title>Indiana Java Tutorial #9</title>
+</head>
+
+<body background="rock_paper.gif" bgcolor="#404040" text="#FFFFFF" link="#10F0F0"
+vlink="#D0D0D0">
+
+<p><img src="indy_logo.gif" width="259" height="76" alt="indy_logo.gif (3362 bytes)"
+align="right"> </p>
+
+<h1><strong><em><font color="#FF0000">Step 9:</font><font color="#FF8040"> advanced issues</em></strong></font></h1>
+
+<p>If you successfully followed the previous lessons, you will now be rewarded. Here is
+the ultimate in <em>Indyjava</em> coding. This will make your script stand from the crowd.<br>
+<br>
+<br>
+<big><big><em><strong><font color="#FF8040">a) Inheritance</font></strong></em></big></big></p>
+
+<p>Now a classic programming feature, single inheritance is also available within the
+Indyjava scripting language. It allows for lean, clever scripting.<br>
+Rooms and Items can derive from other ones, to inherit attributes (like images and sounds)
+functions (like Command and Event blocks) and variables. The keyword that does the magic
+is EXTENDS.</p>
+
+<hr>
+
+<pre>ROOM <font color="#00FFFF">some_definitions</font>
+{
+	ITEM <font color="#00FFFF">Male_Actor</font>
+	{
+		INK { <font
+color="#00FFFF">5</font> }	<font color="#00FF00">// Men's speech will be cyan  :)</font>
+	}
+}
+
+ROOM <font
+color="#00FFFF">main</font>
+{
+	ITEM <font color="#00FFFF">Indy</font> EXTENDS<font
+color="#00FFFF"> Male_Actor</font>	<font color="#00FF00">// Inherit all properties from Male_Actor</font>
+	{
+		ANIMATION
+		{
+			<font
+color="#00FF00">// --- standby images ---</font>
+<font color="#00FFFF">			0  0  &quot;gr/indy_d.gif&quot;  1 </font><font
+color="#00FF00">// Looking South</font><font color="#00FFFF">
+			0  1  &quot;gr/indy_r.gif&quot;  1 </font><font
+color="#00FF00">// Looking West</font><font color="#00FFFF">
+			0  2  &quot;gr/indy_u.gif&quot;  1 </font><font
+color="#00FF00">// Looking North</font><font color="#00FFFF">
+			0  3  &quot;gr/indy_l.gif&quot;  1</font><font
+color="#00FF00"> // Looking East</font>
+			<font color="#00FF00">// --- walking animation ---</font>
+<font
+color="#00FFFF">			1  0  &quot;gr/indy_wd.gif&quot; 4</font><font color="#00FF00"> // Looking South</font><font
+color="#00FFFF">
+			1  1  &quot;gr/indy_wr.gif&quot; 6</font><font color="#00FF00"> // Looking West</font><font
+color="#00FFFF">
+			1  2  &quot;gr/indy_wu.gif&quot; 4</font><font color="#00FF00"> // Looking North</font><font
+color="#00FFFF">
+			1  3  &quot;gr/indy_wl.gif&quot; 6 </font><font color="#00FF00">// Looking East</font>
+			<font
+color="#00FF00">// --- talking animation ---</font>
+<font color="#00FFFF">			2  0  &quot;gr/indy_td.gif&quot; 7</font><font
+color="#00FF00"> // Looking South</font><font color="#00FFFF">
+			2  1  &quot;gr/indy_tr.gif&quot; 4</font><font
+color="#00FF00"> // Looking West</font><font color="#00FFFF">
+			2  2  &quot;gr/indy_tu.gif&quot; 1</font><font
+color="#00FF00"> // Looking North</font><font color="#00FFFF">
+			2  3  &quot;gr/indy_tl.gif&quot; 4</font><font
+color="#00FF00"> // Looking East</font>
+		}
+		POSITION { <font color="#00FFFF">140 140 0</font> }
+	}
+}</pre>
+
+<hr>
+
+<p>Indy will talk in Cyan because it inherits all the attributes defined by its base class
+&quot;Male_Actor&quot;.<br>
+However, derived classes can also override base class' properties by redefining attributes
+and functions with the same name. For example, within the Indy item, it is still possible
+to specify a different INK.<br>
+Please note that inheritance refers only to the properties of the base class, but not to
+its sub-tree of items. This way, if Male_Actor includes an item in its inventory, making
+Indy a derived class of Male_Actor will not make that item appear into Indy's inventory.<br>
+Purists will notice that this system makes no different between 'instance' and 'class
+definition'.</p>
+
+<p>The file <strong>STDLIB.ADV</strong> contains useful base classes for Rooms and Items,
+that you can use by just typing <strong>IMPORT &quot;stdlib.adv&quot;</strong> at the
+beginning of your script.<br>
+<em><strong><font color="#FF8040"><br>
+<br>
+<br>
+<big>b<big>) Variables</font></strong></em></big></big></p>
+
+<p>Integer variables are the most common use of variables in an Indyjava script. But there
+are other types of variables :</p>
+<div align="center"><center>
+
+<table border="0" width="408">
+  <tr>
+    <td width="125"><strong>INTEGER&nbsp;&nbsp; </strong></td>
+    <td width="271">Holds a 32-bit number</td>
+  </tr>
+  <tr>
+    <td width="125"><strong>STRING&nbsp;&nbsp; </strong></td>
+    <td width="271">Holds a line of text</td>
+  </tr>
+  <tr>
+    <td width="125"><strong>ROOMVAR&nbsp;&nbsp; </strong></td>
+    <td width="271">Holds a reference to a ROOM object</td>
+  </tr>
+  <tr>
+    <td width="125"><strong>ITEMVAR&nbsp;&nbsp; </strong></td>
+    <td width="271">Holds a reference to an ITEM</td>
+  </tr>
+</table>
+</center></div>
+
+<p>However, ROOMVARs and ITEMVARs are not useful in the current implementation of the
+Engine.</p>
+
+<hr>
+
+<pre>INTEGER { <font color="#00FFFF">i</font> }	<font color="#00FF00">// Global integer variable</font>
+
+ROOM <font
+color="#00FFFF">main</font>
+{
+	STRING { <font color="#00FFFF">s</font> }	<font
+color="#00FF00">// Local String text variable</font>
+	ITEM <font color="#00FFFF">Indy</font>
+	{
+<em><font
+color="#FF8000">		&lt; ... etc ... &gt;
+</font></em>	}
+
+	COMMAND <font color="#00FFFF">use whip</font>
+	{
+		IF { EQ <font
+color="#00FFFF">i</font> 0 }
+		{
+			LETS <font color="#00FFFF">s</font> <font
+color="#FF0000">&quot;One&quot;</font>
+		}
+		ELSE
+		{
+			ADDS <font color="#00FFFF">s</font> <font
+color="#FF0000">&quot; and more&quot;</font><font color="#00FF00">	// Concatenate after the previous word</font>
+		}
+		SAYS <font
+color="#00FFFF">indy s</font>	<font color="#00FF00">		// Show the content of the String</font>
+		ADD <font
+color="#00FFFF">i</font> <font color="#FF0000">1</font>
+	}
+}</pre>
+
+<hr>
+
+<p>Variables are <em>local</em> to the level they were defined (a room, or an item), or <em>global</em>
+if they were defined out of any room.<br>
+<br>
+<em><strong><font color="#FF8040"><br>
+<br>
+<big>c<big>) Procedures</font></strong></em></big></big></p>
+
+<p>The language currently supports simple procedures, without parameter passing.<br>
+Such subroutines can be useful when repetitive tasks are needed in different parts of the
+script.</p>
+
+<hr>
+
+<pre>PROC <font color="#00FFFF">hello_world</font>
+{
+	SAY <font color="#00FFFF">indy </font><font
+color="#FF0000">&quot;Hello procedural world!&quot;</font>
+}
+
+ROOM <font color="#00FFFF">main</font>
+{
+	ITEM <font
+color="#00FFFF">Indy</font>
+	{
+<em><font color="#FF8000">		&lt; ... etc ... &gt;
+</font></em>	}
+
+	COMMAND <font
+color="#00FFFF">use whip</font>
+	{
+		CALL <font color="#00FFFF">hello_world</font>
+	}
+}</pre>
+
+<hr>
+
+<p>Procedures can have local variables. Also, procedures can be defined into rooms or
+items, making the procedure a &quot;local&quot; name.<br>
+<br>
+<br>
+<br>
+<em><strong><font color="#FF8040"><br>
+<big><big>d) System functions</font></strong></em></big></big></p>
+
+<p>Some variable names and procedure names are reserved for system use. The most useful
+ones are <em>OnEntry</em> and <em>OnExit</em>.<br>
+A room's OnEntry and OnExit procedures (if defined) are automatically called by the system
+when appropiate.</p>
+
+<hr>
+
+<pre>ROOM <font color="#00FFFF">main</font>
+{
+	ITEM <font color="#00FFFF">Indy</font>
+	{
+		ANIMATION
+		{
+			<font
+color="#00FF00">// --- standby images ---</font>
+<font color="#00FFFF">			0  0  &quot;gr/indy_d.gif&quot;  1 </font><font
+color="#00FF00">// Looking South</font><font color="#00FFFF">
+			0  1  &quot;gr/indy_r.gif&quot;  1 </font><font
+color="#00FF00">// Looking West</font><font color="#00FFFF">
+			0  2  &quot;gr/indy_u.gif&quot;  1 </font><font
+color="#00FF00">// Looking North</font><font color="#00FFFF">
+			0  3  &quot;gr/indy_l.gif&quot;  1</font><font
+color="#00FF00"> // Looking East</font>
+			<font color="#00FF00">// --- walking animation ---</font>
+<font
+color="#00FFFF">			1  0  &quot;gr/indy_wd.gif&quot; 4</font><font color="#00FF00"> // Looking South</font><font
+color="#00FFFF">
+			1  1  &quot;gr/indy_wr.gif&quot; 6</font><font color="#00FF00"> // Looking West</font><font
+color="#00FFFF">
+			1  2  &quot;gr/indy_wu.gif&quot; 4</font><font color="#00FF00"> // Looking North</font><font
+color="#00FFFF">
+			1  3  &quot;gr/indy_wl.gif&quot; 6 </font><font color="#00FF00">// Looking East</font>
+			<font
+color="#00FF00">// --- talking animation ---</font>
+<font color="#00FFFF">			2  0  &quot;gr/indy_td.gif&quot; 7</font><font
+color="#00FF00"> // Looking South</font><font color="#00FFFF">
+			2  1  &quot;gr/indy_tr.gif&quot; 4</font><font
+color="#00FF00"> // Looking West</font><font color="#00FFFF">
+			2  2  &quot;gr/indy_tu.gif&quot; 1</font><font
+color="#00FF00"> // Looking North</font><font color="#00FFFF">
+			2  3  &quot;gr/indy_tl.gif&quot; 4</font><font
+color="#00FF00"> // Looking East</font>
+		}
+		POSITION { <font color="#00FFFF">140 140 0</font> }
+	}
+	PROC <font
+color="#00FFFF">OnEntry</font>
+	{
+		SAY <font color="#00FFFF">indy </font><font
+color="#FF0000">&quot;You just entered this room&quot;</font>
+	}
+	PROC <font color="#00FFFF">OnExit</font>
+	{
+		SAY <font
+color="#00FFFF">indy </font><font color="#FF0000">&quot;You are leaving this room&quot;</font>
+	}
+}</pre>
+
+<hr>
+
+<p>The instructions in the OnEntry procedure are automatically executed whenever the view
+switches to that room. The same applies to OnExit, as you would expect.<br>
+The example makes little sense by itself, but you will find that OnEntry and OnExit blocks
+are heavily used in adventure scripting, because they are so convenient.</p>
+
+<p><em><strong><font color="#FF8040"><br>
+</font></strong></em></p>
+
+<p><em><strong><font color="#FF8040"><br>
+<big><big>e) Color Lighting</font></strong></em></big></big></p>
+
+<p>To make character walking more realistic, 2D adventure games used to change color
+palettes when stepping on dark or poorly illuminated parts of a room. Here, a 24 bit color
+filter is used to recreate such effects, through the SETLIGHTING command.</p>
+
+<hr>
+
+<pre>ROOM <font color="#00FFFF">main</font>
+{
+	ITEM <font color="#00FFFF">Indy</font>
+	{
+		ANIMATION
+		{
+			<font
+color="#00FF00">// --- standby images ---</font>
+<font color="#00FFFF">			0  0  &quot;gr/indy_d.gif&quot;  1 </font><font
+color="#00FF00">// Looking South</font><font color="#00FFFF">
+			0  1  &quot;gr/indy_r.gif&quot;  1 </font><font
+color="#00FF00">// Looking West</font><font color="#00FFFF">
+			0  2  &quot;gr/indy_u.gif&quot;  1 </font><font
+color="#00FF00">// Looking North</font><font color="#00FFFF">
+			0  3  &quot;gr/indy_l.gif&quot;  1</font><font
+color="#00FF00"> // Looking East</font>
+			<font color="#00FF00">// --- walking animation ---</font>
+<font
+color="#00FFFF">			1  0  &quot;gr/indy_wd.gif&quot; 4</font><font color="#00FF00"> // Looking South</font><font
+color="#00FFFF">
+			1  1  &quot;gr/indy_wr.gif&quot; 6</font><font color="#00FF00"> // Looking West</font><font
+color="#00FFFF">
+			1  2  &quot;gr/indy_wu.gif&quot; 4</font><font color="#00FF00"> // Looking North</font><font
+color="#00FFFF">
+			1  3  &quot;gr/indy_wl.gif&quot; 6 </font><font color="#00FF00">// Looking East</font>
+			<font
+color="#00FF00">// --- talking animation ---</font>
+<font color="#00FFFF">			2  0  &quot;gr/indy_td.gif&quot; 7</font><font
+color="#00FF00"> // Looking South</font><font color="#00FFFF">
+			2  1  &quot;gr/indy_tr.gif&quot; 4</font><font
+color="#00FF00"> // Looking West</font><font color="#00FFFF">
+			2  2  &quot;gr/indy_tu.gif&quot; 1</font><font
+color="#00FF00"> // Looking North</font><font color="#00FFFF">
+			2  3  &quot;gr/indy_tl.gif&quot; 4</font><font
+color="#00FF00"> // Looking East</font>
+		}
+		POSITION { <font color="#00FFFF">140 140 0</font> }
+	}
+	ITEM <font
+color="#00FFFF">darkzone</font>
+	{
+		IMAGE
+		{
+<font color="#00FFFF">			0  0  &quot;gr/blank.gif&quot;</font>
+<font
+color="#00FFFF">		}
+</font>		POSITION { <font color="#00FFFF">50 140 0</font> }
+		EVENT
+		{
+			IF { INSIDE <font
+color="#00FFFF">darkzone indy</font> }
+			{
+				SETLIGHTING <font color="#00FFFF">indy 0 0 0  50</font>	<font
+color="#00FF00">// 50% darker than normal</font>
+			}
+			ELSE
+			{
+				SETLIGHTING <font
+color="#00FFFF">indy 0 0 0  0</font>	<font color="#00FF00">// 0% dark (back to normal)</font>
+			}
+		}
+	}
+}</pre>
+
+<hr>
+
+<p>The first 3 parameters of SETLIGHTING are the Red-Green-Blue values of the desired
+&quot;target&quot; color (black in the example). The last parameter indicates the degree
+of proximity to the target color, between 0% and 100%.<br>
+It is also possible to specify a LIGHTING block for a room or an item. This would give an
+initial color lighting, that can also be redefined with SETLIGHTING during gameplay.<em><strong><font
+color="#FF8040"><br>
+<br>
+<br>
+<big><big>f) Imageless items, and scaling</font></strong></em></big></big></p>
+
+<p>Several times during the tutorial, &quot;blank&quot; completely transparent GIF images
+were used to work as invisible areas. It is possible to create items without images that
+still have a rectangular shape, using the SIZE keyword. This saves memory by avoiding
+unnecessary image files.</p>
+
+<hr>
+
+<pre>ROOM <font color="#00FFFF">main</font>
+{
+	SCALE { <font color="#00FFFF">0 30    143 50</font> }
+	ITEM <font
+color="#00FFFF">Indy</font>
+	{
+		ANIMATION
+		{
+<em><font color="#FF8000">			&lt; ... etc ... &gt;
+</font></em>		}
+		POSITION { <font
+color="#00FFFF">140 140 0</font> }
+	}
+	ITEM <font color="#00FFFF">area</font>
+	{
+		SIZE
+		{
+<font
+color="#00FFFF">			50  30	</font><font color="#00FF00">// Force this pixel size, despite the lack of an image</font>
+		}
+		POSITION { <font
+color="#00FFFF">50 140 0</font> }
+	}
+}</pre>
+
+<hr>
+
+<p>Further more, such SIZE statements can be used with items which do have images. That
+would override the room's scaling scheme for that item.<br>
+<br>
+As you must have noticed, the default scaling scheme for rooms is to show items at 100%
+size at the bottom of the screen and slowly decrease to 0% size at the top, to simulate a
+3D perspective. The SCALE block for a room allows to customise these 2 parameters. In this
+example, characters will appear at 30% size at the top of the screen (y=0) and 50% size at
+the bottom (y=143).</p>
+
+<p><em><strong><font color="#FF8040"><br>
+<br>
+<br>
+<br>
+<big><big>g) Splitting an adventure into several parts</font></strong></em></big></big></p>
+
+<p>It is often preferable to split a script into independent parts, that are played by the
+user sequentially.</p>
+
+<hr>
+
+<pre>ROOM <font color="#00FFFF">temple</font>
+{
+<em><font color="#FF8000">	&lt; ... etc ... &gt;
+</font></em>
+	COMMAND <font
+color="#00FFFF">use gun monster</font>
+	{
+		LOAD <font color="#FF0000">&quot;002.GAG&quot;</font>	<font
+color="#00FF00">// After successfully completing Part I, start Part II</font>
+	}
+}</pre>
+
+<hr>
+
+<p>The method is to compile every ADV and save the resulting adventure under a different
+name (like &quot;001.GAG&quot;, &quot;002.GAG&quot; , etc...). At the right time in the
+script, use the LOAD command to start the following part. Please note that all variables
+and inventory items are lost in the loading process.<br>
+<em><strong><font color="#FF8040"><br>
+<br>
+<br>
+<br>
+<big><big>h) Cutscenes</font></strong></em></big></big></p>
+
+<p>An important part of a finished product is the quality of intermediate, explanatory,
+non-interactive, cinematic sequences. This is achieved with a subtle use of WAIT and SLEEP
+instructions.</p>
+
+<hr>
+
+<pre>ROOM <font color="#00FFFF">main</font>
+{
+	ITEM <font color="#00FFFF">Indy</font>
+	{
+<em><font
+color="#FF8000">		&lt; ... etc ... &gt;
+</font></em>	}
+	ITEM <font color="#00FFFF">big_title</font>
+	{
+		IMAGE {<font
+color="#00FFFF"> 0  0  &quot;title.gif&quot;</font> }
+		POSITION { <font color="#00FFFF">150 50 0</font> }<em><font
+color="#FF8000">
+</font></em>	}
+	COMMAND <font color="#00FFFF">use whip</font>
+	{
+<font
+color="#00FF00">		// Begin non-interactive sequence
+</font>		MOVE <font color="#00FFFF">big_title 150 130 0</font>
+		WAIT <font
+color="#00FFFF">big_title</font>		<font color="#00FF00">// Wait for the title to stop moving.</font>
+		SLEEP <font
+color="#00FFFF">1500</font>		<font color="#00FF00">// Pause 1.5 seconds.</font>
+		MOVE <font
+color="#00FFFF">indy 210 142 0</font>
+		WAIT <font color="#00FFFF">indy</font>		<font
+color="#00FF00">// Wait for Indy to stop moving.</font>
+		SETORIENTATION <font
+color="#00FFFF">indy 0</font>	<font color="#00FF00">// Look at the user.</font>
+		SAY <font
+color="#00FFFF">indy </font><font color="#FF0000">&quot;I like cutscenes!&quot;</font>
+		WAIT <font
+color="#00FFFF">indy		</font><font color="#00FF00">// Wait for his sentence to finish.</font>
+<font
+color="#00FF00">		// End of sequence (player will take control again automatically)
+</font>	}
+}</pre>
+
+<hr>
+
+<p>Cutscenes can obviously appear anywhere in the script. Any language instruction can be
+used in a cutscene, including switching to another room with GOTO.<br>
+As soon as there are no more WAIT or SLEEP instructions in the program flow, control is
+automatically given back to the player : the cursor changes and the interface panel
+reappears (so, you don't have to deal with these details).</p>
+
+<p><em><strong><font color="#FF8040"><br>
+<br>
+<br>
+<br>
+<big><big>i) Map view</font></strong></em></big></big></p>
+
+<p>Another feature of memorable games was the interface change to a verb-less mode,
+typically used in map overviews.<br>
+This is achieved with the SETMAPMODE instruction.</p>
+
+<hr>
+
+<pre>ROOM <font color="#00FFFF">island_map</font>
+{
+	IMAGE { <font color="#00FFFF">&quot;island_overview.gif&quot;</font> }
+	SCALE { <font
+color="#00FFFF">0 30    143 30</font> }	<font color="#00FF00">// Large scale (small characters)</font>
+	ITEM <font
+color="#00FFFF">house</font>
+	{
+<em><font color="#FF8000">		&lt; ... etc ... &gt;
+</font></em>	}
+
+	PROC <font
+color="#00FFFF">OnEntry</font>
+	{
+		PLACE <font color="#00FFFF">indy island_map</font>	<font
+color="#00FF00">// Be sure to be here.</font>
+		SETMAPMODE <font color="#00FFFF">1</font>		<font
+color="#00FF00">// Change to special &quot;map&quot; interface</font>
+	}
+	PROC <font
+color="#00FFFF">OnExit</font>
+	{
+		SETMAPMODE <font color="#00FFFF">0</font>		<font
+color="#00FF00">// Back to standard interface</font>
+	}
+	EVENT
+	{
+		IF { COLLISION <font
+color="#00FFFF">indy house</font> }
+		{
+<font color="#00FF00">			// Player reached an interesting point in the map</font>
+			PLACE <font
+color="#00FFFF">indy another_room</font>
+			GOTO <font color="#00FFFF">another_room
+</font>		}
+	}
+}</pre>
+
+<hr>
+
+<p>When in &quot;map&quot; mode, the names of items pop up when the mouse is over them,
+but no sentence can be formed by the player. The player can just walk across the map.<br>
+<em><strong><font color="#FF8040"><br>
+<br>
+<br>
+<br>
+<big><big>j) Changing item labels, and default verbs</font></strong></em></big></big></p>
+
+<p>In the standard interface, the default verb and the label of an item are combined to
+form a default sentence when the mouse is over the item (like &quot;Look Whip&quot;). This
+default sentence is executed if the player presses the right mouse button over the item.
+The default sentence that will be proposed to the player can be altered to ease gameplay,
+or to complicate it.</p>
+
+<hr>
+
+<pre>ROOM <font color="#00FFFF">main</font>
+{
+	IMAGE {<font color="#00FFFF"> &quot;gr/idol.jpg&quot;</font> }
+	ITEM <font
+color="#00FFFF">Indy</font>
+	{
+<em><font color="#FF8000">		&lt; ... etc ... &gt;
+</font></em>	}
+<font
+color="#00FF00">	/* And now, a bit of foreground vegetation */</font>
+	ITEM <font
+color="#00FFFF">plant</font>
+	{
+ 		IMAGE {<font color="#00FFFF"> 0  0  &quot;gr/plant_1.gif&quot;</font> }
+		POSITION { <font
+color="#00FFFF">0 182 0</font> }
+		DEFAULTV { <font color="#00FFFF">Pull</font> }		<font
+color="#00FF00">// custom default-verb</font>
+	}
+	ITEM <font color="#00FFFF">plant_2</font>
+	{
+		IMAGE {<font
+color="#00FFFF"> 0  0  &quot;gr/plant_2.gif&quot;</font> }
+		POSITION { <font
+color="#00FFFF">256 182 38</font> }
+		LABEL { <font color="#FF0000">&quot;strange thing&quot;</font> }<font
+color="#00FF00">	// Eye-catching custom label</font>
+	}
+	ITEM <font color="#00FFFF">plant_3</font>
+	{
+		IMAGE {<font
+color="#00FFFF"> 0  0  &quot;gr/plant_3.gif&quot;</font> }
+		POSITION { <font
+color="#00FFFF">190 182 0</font> }
+		LABEL { <font color="#FF0000">&quot;&quot;</font> }			<font
+color="#00FF00">// Non-selectable scenary item</font>
+	}
+
+	COMMAND <font color="#00FFFF">look plant_2		</font><font
+color="#00FF00">// &quot;look at strange thing&quot;   :-)</font>
+	{
+		SAY <font
+color="#00FFFF">indy </font><font color="#FF0000">&quot;Nothing strange here&quot;</font>
+		SETLABEL <font
+color="#00FFFF">plant_2</font> <font color="#FF0000">&quot;plant&quot;</font><font
+color="#00FFFF">	</font><font color="#00FF00">// Use the same appearent label as the first item</font>
+	}
+}</pre>
+
+<hr>
+
+<p>If no LABEL is specified for an item, its name will be used as a label.<br>
+Notice how item labels can be altered at any time with SETLABEL.<br>
+Also, items with an empty label (like Plant_3 above) will become unselectable for the
+player. This is useful for scenary items like vegetation.</p>
+
+<p>The default verb for all items is <em>Look</em> but this can be specified on a per-item
+basis in the DEFAULTV block. Typically, the default verb for human characters should be
+set to <em>Talk</em> to make gameplay intuitive. To change this default verb at runtime,
+use the SETDEFAULTV instruction.<br>
+<em><strong><font color="#FF8040"><br>
+<br>
+<br>
+<br>
+<big><big>k) Using the Console</font></strong></em></big></big></p>
+
+<p>After importing a script, the <em>Immediate Mode</em> of the interpreter is available,
+from the menu Options/Show_Console.<br>
+Any language instructions (not block headers) can be tried here, like MOVE, SETIMAGE,
+etc... This can be very useful to debug scenes and try commands that can be part of your
+script later on.</p>
+
+<p align="center"><img src="tutorial_9a.gif" width="312" height="269"
+alt="tutorial_9a.gif (2923 bytes)"><br>
+</p>
+
+<p>&nbsp;</p>
+
+<p><big><big><em><strong><font color="#FF8040">l) Alpha channel effects</font></strong></em></big></big></p>
+
+<p>Every item has a transparency level. It is specified as a number between 0 and 100
+(default is 100, meaning 'no transparency effect'). You can specify this by setting the
+ALPHA property of items, in a very similar way to color lighting.</p>
+
+<hr>
+
+<pre>ROOM <font color="#00FFFF">main</font>
+{
+	ITEM <font color="#00FFFF">Indy</font>
+	{
+<em><font
+color="#FF8000">		&lt; ... etc ... &gt;
+</font></em>	}
+	COMMAND <font color="#00FFFF">drink potion</font>
+	{
+		IF { EQ <font
+color="#00FFFF">f 0 </font>}
+		{
+			SETALPHA <font color="#00FFFF">indy 50</font>	<font
+color="#00FF00">// 50% transparent !</font>
+			LET <font color="#00FFFF">f 1</font>
+		}
+		ELSE
+		{
+			SETALPHA <font
+color="#00FFFF">indy 100</font>	<font color="#00FF00">// 100% opacity (back to normal)</font>
+			LET <font
+color="#00FFFF">f 0</font>
+		}
+	}
+}</pre>
+
+<hr>
+
+<p>It is also possible to specify an ALPHA block for an item, to give an initial
+transparency level.<em><strong><font color="#FF8040"><br>
+<br>
+<br>
+<br>
+<br>
+<big><big>m) Full motion video</font></strong></em></big></big></p>
+
+<p>Video clips are easily played with a single instruction WAITVIDEO.</p>
+
+<hr>
+
+<pre>ROOM <font color="#00FFFF">main</font>
+{
+	ITEM <font color="#00FFFF">Indy</font>
+	{
+<em><font
+color="#FF8000">		&lt; ... etc ... &gt;
+</font></em>	}
+
+	COMMAND <font color="#00FFFF">use whip</font>
+	{
+		WAITVIDEO <font
+color="#00FFFF">&quot;RAIDERS.MPG&quot;</font>
+	}
+}</pre>
+
+<hr>
+
+<p>This requires <a href="http://java.indy3d.net/download.htm">Java Media Framework</a>
+extensions to be installed. These are not yet part of Java 1.2 and have to be downloaded
+separately.<br>
+If these extensions are not installed or playback is not possible for whatever reason, the
+Engine will silently ignore the WAITVIDEO instruction. No error message will be issued.<br>
+<br>
+<em><strong><font color="#FF8040"><br>
+<br>
+<big><big>n) Speech</font></strong></em></big></big></p>
+
+<p>Characters can really talk if needed, but the voices will have to be recorded first.</p>
+
+<hr>
+
+<pre>ROOM <font color="#00FFFF">main</font>
+{
+	ITEM <font color="#00FFFF">Indy</font>
+	{
+<em><font
+color="#FF8000">		&lt; ... etc ... &gt;
+</font></em>	}
+
+	COMMAND <font color="#00FFFF">use whip</font>
+	{
+		WAITSPEAK <font
+color="#00FFFF">indy </font><font color="#FF0000">&quot;Nothing strange here&quot;</font>  <font
+color="#00FFFF"> </font><font color="#FF0000">&quot;snd/nothing.wav&quot;</font>
+	}
+}</pre>
+
+<hr>
+
+<p>The first parameter is the text line that will appear, and the second one is the
+filename of the recorded voice.<br>
+Once again, this requires <a href="http://java.indy3d.net/download.htm">Java Media
+Framework</a> extensions to be installed. If they are not present, the command will behave
+exactly like WAITSAY.<br>
+<br>
+</p>
+
+
+
+
+
+
+
+<p><em><strong><font color="#FF8040"><br>
+<br>
+<big><big>o) Custom transitions</font></strong></em></big></big></p>
+
+<p>Several standard graphic transition effects are available when going from one room to another, and are called by their number, with the TRANSITION command.
+However, it is also possible to create custom transitions, written and compiled in the Java language. Such plug-in transitions are simply called
+by their filename, with the GOTOTRANSITION command.</p>
+
+<hr>
+
+<pre>ROOM <font color="#00FFFF">main</font>
+{
+	ITEM <font color="#00FFFF">Indy</font>
+	{
+<em><font
+color="#FF8000">		&lt; ... etc ... &gt;
+</font></em>	}
+
+	COMMAND <font color="#00FFFF">use whip</font>
+	{
+		GOTOTRANSITION <font
+color="#00FFFF">street </font><font color="#FF0000">&quot;custom_transition_example&quot;</font>
+	}
+}</pre>
+
+<hr>
+
+<p>The code above supposes that a pre-compiled Java file named "custom_transition_example.class" is available in RESOURCE.JAR (see below).<br>
+These custom extensions have to follow some rules. The programming of such extensions goes far beyond the scope of this manual, but if you feel you have the Java skills and want to have special
+transition effects in your game, check these <a href="http://java.indy3d.net/indy_transitions.zip">sources</a>.
+<br>
+<br>
+<br>
+</p>
+
+
+
+
+
+
+<p><em><strong><font color="#FF8040"><br>
+<br>
+<big><big>p) Packing it up</font></strong></em></big></big></p>
+
+<p>A perfectly finished adventure should be packed, so that players can't look at the
+graphics before going further in the game. The quick way of achieving this is to use the
+JAR file format. It's similar to a ZIP file, except that it's Java-specific. The JAR
+utility can be downloaded from <a href="http://java.indy3d.net/jar.exe">here</a>.</p>
+
+<p>The IndyJava engine always looks for a file called &quot;resource.jar&quot; and will
+use files stored there as well as those available in the current subdirectory.</p>
+
+<p>To pack your stuff, issue a command like this at your Operating System prompt : </p>
+
+<pre><strong>	<font color="#DFFFDF">JAR  -cf  resource.jar  gr/*.*  snd/*.*  *.gag</strong></font></pre>
+
+<p>Be sure to be located in the engine's directory when doing this (type <font
+color="#DFFFDF"><strong>CD indyjava</strong></font>) .<br>Also, be very careful with uppercase/lowercase in all filenames referenced by your script. Retrieving files from a JAR file is a case-sensitive operation.</p>
+
+<p>Notice that the demo adventure does not use this feature, for educational reasons.</p>
+
+<p>Unfortunately, for maximum compatibility with all platforms (with browsers, mainly) you
+should avoid putting your *.GAG files and your audio files in the pack.</p>
+
+<p><br>
+</p>
+
+<p align="right"><a href="ref.htm">Next &gt;&gt;</a></p>
+
+<p><a href="index.html">Back to the main page</a></p>
+</body>
+</html>

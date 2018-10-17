@@ -1,0 +1,105 @@
+<html>
+
+<head>
+<title>Indiana Java Tutorial #5</title>
+</head>
+
+<body background="rock_paper.gif" bgcolor="#404040" text="#FFFFFF" link="#10F0F0"
+vlink="#D0D0D0">
+
+<p><img src="indy_logo.gif" width="259" height="76" alt="indy_logo.gif (3362 bytes)"
+align="right"> </p>
+
+<h1><strong><em><font color="#FF0000">Step 5:</font><font color="#FF8040"> improving
+animation</em></strong></font></h1>
+
+<p>Indy walks and talks, but that's not enough. At specific moments, the character must
+perform a special movement.</p>
+
+<p>There are 4 possible &quot;attitudes&quot; for items. The first 3 are used by the
+system (#0 is standby, #1 is walking, #2 is talking) while the last one (attitude #3) is
+available for custom animations.<br>
+Suppose you want the character to look like he is suddenly pushing something with is
+hands.</p>
+
+<hr>
+
+<pre>ROOM <font color="#00FFFF">main</font>
+{
+	IMAGE { <font color="#00FFFF">&quot;gr/idol.jpg&quot;</font> }
+	WALK { <font
+color="#00FFFF">&quot;gr/idol_bm.gif&quot;</font> }
+
+	ITEM <font color="#00FFFF">Indy</font>       <font
+color="#00FF00">// My hero   :)</font>
+	{
+		ANIMATION
+		{
+			<font color="#00FF00">// --- standby images ---</font>
+<font
+color="#00FFFF">			0  0  &quot;gr/indy_d.gif&quot;  1 </font><font color="#00FF00">// Looking South</font><font
+color="#00FFFF">
+			0  1  &quot;gr/indy_r.gif&quot;  1 </font><font color="#00FF00">// Looking West</font><font
+color="#00FFFF">
+			0  2  &quot;gr/indy_u.gif&quot;  1 </font><font color="#00FF00">// Looking North</font><font
+color="#00FFFF">
+			0  3  &quot;gr/indy_l.gif&quot;  1</font><font color="#00FF00"> // Looking East</font>
+			<font
+color="#00FF00">// --- walking animation ---</font>
+<font color="#00FFFF">			1  0  &quot;gr/indy_wd.gif&quot; 4</font><font
+color="#00FF00"> // Looking South</font><font color="#00FFFF">
+			1  1  &quot;gr/indy_wr.gif&quot; 6</font><font
+color="#00FF00"> // Looking West</font><font color="#00FFFF">
+			1  2  &quot;gr/indy_wu.gif&quot; 4</font><font
+color="#00FF00"> // Looking North</font><font color="#00FFFF">
+			1  3  &quot;gr/indy_wl.gif&quot; 6 </font><font
+color="#00FF00">// Looking East</font>
+			<font color="#00FF00">// --- talking animation ---</font>
+<font
+color="#00FFFF">			2  0  &quot;gr/indy_td.gif&quot; 7</font><font color="#00FF00"> // Looking South</font><font
+color="#00FFFF">
+			2  1  &quot;gr/indy_tr.gif&quot; 4</font><font color="#00FF00"> // Looking West</font><font
+color="#00FFFF">
+			2  2  &quot;gr/indy_tu.gif&quot; 1</font><font color="#00FF00"> // Looking North</font><font
+color="#00FFFF">
+			2  3  &quot;gr/indy_tl.gif&quot; 4</font><font color="#00FF00"> // Looking East</font>
+		}
+		POSITION { <font
+color="#00FFFF">170 170 0</font> }
+	}
+	ITEM <font color="#00FFFF">Idol</font>
+	{
+		IMAGE {<font
+color="#00FFFF"> 0  0  &quot;gr/idol.gif</font>&quot; }
+		POSITION { <font color="#00FFFF">155 135 0</font> }
+
+		COMMAND <font
+color="#00FFFF">push idol</font>
+		{
+			SETANIMATION <font color="#00FFFF">indy 3 0 &quot;gr/indy_su.gif&quot; 1</font><font
+color="#00FF00"> // Define image #0 for attitude #3</font>
+			SETATTITUDE <font
+color="#00FFFF">indy 3			</font><font color="#00FF00"> // Switch to that mode</font>
+			SAY <font
+color="#00FFFF">indy</font> <font color="#FF0000">&quot;hummmmpppfff...&quot;</font>
+			WAIT <font
+color="#00FFFF">indy</font>
+			SETATTITUDE <font color="#00FFFF">indy 0	</font><font
+color="#00FF00">	// Back to normal animation (standby)</font>
+			SAY <font color="#00FFFF">indy</font> <font
+color="#FF0000">&quot;That doesn't work.&quot;</font>
+		}
+	}
+}</pre>
+
+<hr>
+
+<p>Notice how an image that wasn't included in the initial ANIMATION block for this item
+is defined inside a COMMAND block, and loaded on the fly.<br>
+It is also possible to load images for any other attitude with the same instruction.</p>
+
+<p align="right"><a href="tutorial_6.htm">Next &gt;&gt;</a></p>
+
+<p><a href="index.html">Back to the main page</a></p>
+</body>
+</html>

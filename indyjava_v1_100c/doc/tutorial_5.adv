@@ -1,0 +1,45 @@
+/*  --- INDIANA JAVA Multiplatform Adventure Game Engine ---
+    tutorial #5 : Improving animation                   */
+
+ROOM main
+{
+    IMAGE { "gr/idol.jpg" }
+    WALK { "gr/idol_bm.gif" }
+
+    ITEM Indy       // My hero   :)
+    {
+        ANIMATION
+        {
+            // --- standby images ---
+            0  0  "gr/indy_d.gif" 1 // Looking South
+            0  1  "gr/indy_r.gif" 1 // Looking West
+            0  2  "gr/indy_u.gif" 1 // Looking North
+            0  3  "gr/indy_l.gif" 1 // Looking East
+            // --- walking animation ---
+            1  0  "gr/indy_wd.gif" 4    // Looking South
+            1  1  "gr/indy_wr.gif" 6    // Looking West
+            1  2  "gr/indy_wu.gif" 4    // Looking North
+            1  3  "gr/indy_wl.gif" 6    // Looking East
+            // --- talking animation ---
+            2  0  "gr/indy_td.gif" 7    // Looking South
+            2  1  "gr/indy_tr.gif" 4    // Looking West
+            2  2  "gr/indy_tu.gif" 1    // Looking North
+            2  3  "gr/indy_tl.gif" 4    // Looking East
+        }
+        POSITION { 170 170 0 }
+    }
+    ITEM Idol
+    {
+        IMAGE { 0  0  "gr/blank.gif" }
+        POSITION { 190 135 0 }
+
+        COMMAND push idol
+        {
+            SAY indy "hummmmpppfff..."
+            SETIMAGE indy 3 0 "gr/indy_su.gif"  // Define an image
+            SETATTITUDE indy 3             // Switch to this mode
+            WAIT indy
+            SAY indy "That doesn't work."
+        }
+    }
+}

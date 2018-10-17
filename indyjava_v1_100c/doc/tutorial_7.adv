@@ -1,0 +1,68 @@
+/*  --- INDIANA JAVA Multiplatform Adventure Game Engine ---
+    tutorial #7 : Switching players                   */
+
+ROOM main
+{
+    BGSOUND { "snd/indysong.mid" }
+    IMAGE { "gr/street_2.gif" }
+    WALK { "gr/street_2_bm.gif" }
+
+    ITEM Indy       // My hero   :)
+    {
+        ANIMATION
+        {
+            // --- standby images ---
+            0  0  "gr/indy_d.gif" 1 // Looking South
+            0  1  "gr/indy_r.gif" 1 // Looking West
+            0  2  "gr/indy_u.gif" 1 // Looking North
+            0  3  "gr/indy_l.gif" 1 // Looking East
+            // --- walking animation ---
+            1  0  "gr/indy_wd.gif" 4    // Looking South
+            1  1  "gr/indy_wr.gif" 6    // Looking West
+            1  2  "gr/indy_wu.gif" 4    // Looking North
+            1  3  "gr/indy_wl.gif" 6    // Looking East
+            // --- talking animation ---
+            2  0  "gr/indy_td.gif" 7    // Looking South
+            2  1  "gr/indy_tr.gif" 4    // Looking West
+            2  2  "gr/indy_tu.gif" 1    // Looking North
+            2  3  "gr/indy_tl.gif" 4    // Looking East
+        }
+        POSITION { 140 140 0 }
+        ITEM whip
+        {
+            ICON { "gr/whip.gif" }
+        }
+        COMMAND talk indy
+        {
+            SAY sophia "I give you control again"
+            SETPLAYER indy
+        }
+    }
+
+    ITEM sophia
+    {
+        ANIMATION
+        {
+            // --- standby images ---
+            0  1  "gr/sophia_r.gif" 1   // Looking West
+            0  3  "gr/sophia_l.gif" 1   // Looking East
+            // --- walking animation ---
+            1  1  "gr/sophia_wr.gif" 1   // Looking West
+            1  3  "gr/sophia_wl.gif" 1   // Looking East
+            // --- talking animation ---
+            2  1  "gr/sophia_tr.gif" 4  // Looking West
+            2  3  "gr/sophia_tl.gif" 4  // Looking East
+        }
+        INK { 4 }   // Sophia's speech will be green  :)
+        POSITION { 250 142 0 }
+        ITEM medallion
+        {
+            ICON { "gr/medalion.gif" }
+        }
+        COMMAND talk sophia
+        {
+            SAY indy "Ok, you are the master now."
+            SETPLAYER sophia    // Here it is!
+        }
+    }
+}
