@@ -1,7 +1,7 @@
 # indiana-Java-indyjava-2d-gamesystem
 *THIS IS NOT A GAG! LULZ*
 Indeed, this is not a Graphic Adventure Game (G.A.G.) as you might think. 
-Rather, it's a system to create and run 2D graphic adventure games. No Java knowledge required! . No internet connection required! It includes a small fully playable adventure, for you to have fun immediately. It's entirely written in Java, so non-Wintel users can also enjoy playing and creating that kind of games. 
+Rather, it's a system to create and run 2D graphic adventure games. No Java knowledge required! . No internet connection required! It includes a small fully playable adventure, for you to have fun immediately. It uses a custom game script and it's engine is entirely written in Java, so non-Wintel users can also enjoy playing and *creating* that kind of games. 
 # Indiana Java
 ------------------
 Multiplatform Adventure Game Engine
