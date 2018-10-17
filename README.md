@@ -1,20 +1,17 @@
 # indiana-Java-indyjava-2d-gamesystem
 *THIS IS NOT A GAG! LULZ*
 Indeed, this is not a Graphic Adventure Game (G.A.G.) as you might think. 
-Rather, it's a system to create and run 2D graphic adventure games. No Java knowledge required! . No internet connection required! It includes a small fully playable adventure, for you to have fun immediately. It's entirely written in Java, so non-Wintel users can also enjoy playing and creating that kind of games. (( A few notes from FE: DOCS folder has the same Manual and tutorals. This is a scripting engine that uses Java, assuming you have java2d (ie java 1.5 and up?) then DLLs aren't needed at all.   DOCS folder has the Manual. Loading the applet standalone works GREAT, as does using with netscape7.2, FF 53ESR has issue. Add the folder location in url fashion to the java exemption cause java is analvirgin. To save a game you need to use the applet by it self see below))
-
+Rather, it's a system to create and run 2D graphic adventure games. No Java knowledge required! . No internet connection required! It includes a small fully playable adventure, for you to have fun immediately. It's entirely written in Java, so non-Wintel users can also enjoy playing and creating that kind of games. 
 # Indiana Java
 ------------------
 Multiplatform Adventure Game Engine
 
 
-Author: Chir
-
-Please send your questions and comments to chir@geocities.com
+Author: Chir chir@geocities.com ((RIP? MIA?))
 
 Indyjava Web site:  http://java.indy3d.net  (no longer exists) 
-GO here, https://web.archive.org/web/19991013045038/http://java.indy3d.net:80/index.html ALSO 
-http://indyjava.tiddlyspot.com/
+GO here instead, https://web.archive.org/web/19991013045038/http://java.indy3d.net:80/index.html 
+ALSO, http://indyjava.tiddlyspot.com/ (Downloads do not work Good luck)
 
 
 
@@ -25,12 +22,13 @@ http://indyjava.tiddlyspot.com/
       2. Extract all files from the package into a temporary directory
          using your favorite Zip archiver.
       3. Open INDY.HTM with your browser and follow the instructions.
-OR
-      Once you have it correctly installed, you launch the game by typing 
+      0.R
+      1. Or you launch the game by typing 
       JAVA -jar INDY.JAR 
-      at the O.S. command prompt. (Also, if you use w95/98/NT and installed Java 1.2, you just need to double click on INDY.JAR
+      at the O.S. command prompt. (Also, if you use w95/98/NT and installed Java 1.2(or above), you just need to double click on INDY.JAR
       to launch the engine as an application. No need to mess with the command line.)
       
+
 What is Indy Java? It's a multiplatform graphic adventure game system that can run from
 a web browser.
 
@@ -47,6 +45,9 @@ some kind of Java 1.1 support. A Java-enabled web browser is enough.
 
 The recommended setup is any workstation with a 24 bit color desktop at 640x480 with
 sound, and running a Java 1.2 Runtime Interpreter independently of any browser.
+
+# A few notes from FE: 
+This engine that uses Java, assuming you have java2d (ie java 1.5 and up?) then the DLLs aren't needed at all. Loading the applet standalone works GREAT, as does using with netscape7.2, FF 53ESR has issue. You might have to add the folder location(in url form) to the security exception list in java's settnigs in controlpanel. To save a game you need to use the applet by it self.
 
 
 Installation instructions
